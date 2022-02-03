@@ -2,6 +2,8 @@ import { Link, useLoaderData } from "remix";
 import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 
+import Heading from "~/components/typography/heading";
+
 export const loader = async () => {
   return getDrinks();
 };
@@ -11,11 +13,11 @@ export default function Index() {
 
   return (
     <div>
-      <h1>Drinks</h1>
+      <Heading tag="h2">Drinks</Heading>
       <ul>
         {drinks.map((drink) => (
           <li key={drink.name}>
-            <Link to={drink.name}>{drink.name}</Link>
+            <Link to={`/drinks/${drink.name}`}>{drink.name}</Link>
           </li>
         ))}
       </ul>
