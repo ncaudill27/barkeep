@@ -1,14 +1,23 @@
-import { Link } from "remix";
-import Header from "~/components/header";
+import { Link, useLoaderData } from "remix";
+import { getDrinks } from "~/drink";
+import type { Drink } from "~/drink";
+
+export const loader = async () => {
+  return getDrinks();
+};
 
 export default function Index() {
+  const drinks = useLoaderData<Drink[]>();
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <Header />
+    <div>
+      <h1>Drinks</h1>
       <ul>
-        <li>
-          <Link to="/drinks">Drinks</Link>
-        </li>
+        {drinks.map((drink) => (
+          <li key={drink.name}>
+            <Link to={drink.name}>{drink.name}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import Header from "./components/header";
 
 export const meta: MetaFunction = () => {
   return { title: "New Remix App" };
@@ -22,7 +23,8 @@ export default function App() {
         <Links />
         {typeof document === "undefined" ? "__STYLES__" : null}
       </head>
-      <body>
+      <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+        <Header />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
