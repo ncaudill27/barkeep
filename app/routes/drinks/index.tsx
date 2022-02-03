@@ -8,7 +8,6 @@ export const loader = async () => {
 
 export default function Drinks() {
   const drinks = useLoaderData<Drink[]>();
-  console.log(drinks);
 
   return (
     <div>
