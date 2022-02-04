@@ -3,8 +3,6 @@ import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 import type { LoaderFunction } from "remix";
 
-import Heading from "~/components/typography/heading";
-
 export const loader: LoaderFunction = async () => {
   return getDrinks();
 };
@@ -14,7 +12,6 @@ export default function Index() {
 
   return (
     <div>
-      <Heading tag="h2">Drinks</Heading>
       <ul>
         {drinks.map((drink) => (
           <li key={drink.name}>

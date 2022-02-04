@@ -22,7 +22,7 @@ const Nav = () => {
   return (
     <Wrapper>
       {links.map(({ href, text }) => (
-        <NavLink key={href} to={href} style={styles}>
+        <NavLink key={href} to={`/drinks${href}`} style={styles}>
           {text}
         </NavLink>
       ))}

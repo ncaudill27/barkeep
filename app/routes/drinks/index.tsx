@@ -11,7 +11,6 @@ export default function Drinks() {
 
   return (
     <div>
-      <h1>Drinks</h1>
       <ul>
         {drinks.map((drink) => (
           <li key={drink.name}>
