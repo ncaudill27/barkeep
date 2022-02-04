@@ -17,7 +17,7 @@ export default function Drink() {
 
   return (
     <div>
-      <Heading tag="h1">{drink.name}</Heading>
+      <Heading tag="h2">{drink.name}</Heading>
     </div>
   );
 }

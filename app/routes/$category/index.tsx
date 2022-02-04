@@ -1,4 +1,4 @@
-import { useLoaderData, Link, useParams } from "remix";
+import { useLoaderData, Link } from "remix";
 import type { LoaderFunction } from "remix";
 import { getDrinksByCategory } from "~/drink";
 import type { Drink } from "~/drink";
@@ -11,11 +11,8 @@ export const loader: LoaderFunction = ({ params }) => {
 
 export default function Drink() {
   const drinks = useLoaderData<Drink[]>();
-  const { category } = useParams();
-  console.log(category);
 
   return (
-    <div>
       <ul>
         {drinks.map((drink) => (
           <li key={drink.name}>
@@ -23,6 +20,5 @@ export default function Drink() {
           </li>
         ))}
       </ul>
-    </div>
   );
 }
