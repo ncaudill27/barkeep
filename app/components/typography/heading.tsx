@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface HeadingProps {
+type HeadingProps = {
   tag: string;
   children: string;
 }

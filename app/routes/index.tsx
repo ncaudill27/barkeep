@@ -1,10 +1,11 @@
 import { Link, useLoaderData } from "remix";
 import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
+import type { LoaderFunction } from "remix";
 
 import Heading from "~/components/typography/heading";
 
-export const loader = async () => {
+export const loader: LoaderFunction = async () => {
   return getDrinks();
 };
 

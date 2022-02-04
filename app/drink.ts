@@ -9,27 +9,28 @@ export type Drink = {
   ingredients: Array<{ name: string; amount: string; measurement: string }>;
 };
 
-export async function getDrinks() {
-  const query = '*[_type == "dinnerCocktail"] {name}';
-
-  return client.fetch(query).then((drinks: Drink[]) => {
-    return drinks;
-  });
-}
-
-export async function getDrinksByCategory(category: string) {
-  const query =
-    "*[count((categories[]->title)[lower(@) == $category]) > 0]{name}";
-  const params = { category };
+async function sanityFetchDrinks(query: string, params = {}): Promise<Drink[]> {
   return client.fetch(query, params).then((drinks: Drink[]) => {
     return drinks;
   });
 }
 
-export async function getDrink(name: string) {
-  const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients, categories}`;
+export async function getDrinks(): Promise<Drink[]> {
+  const query = '*[_type == "dinnerCocktail"] {name}';
+
+  return await sanityFetchDrinks(query);
+}
+
+export async function getDrinksByCategory(category: string): Promise<Drink[]> {
+  const query =
+    "*[count((categories[]->title)[lower(@) == $category]) > 0]{name}";
+  const params = { category };
+  return await sanityFetchDrinks(query, params);
+}
+
+export async function getDrink(name: string): Promise<Drink> {
+  const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients }`;
   const params = { name };
-  await client.fetch(query, params).then((drinks: Drink[]) => {
-    return drinks[0];
-  });
+  const [drink] = await sanityFetchDrinks(query, params);
+  return drink;
 }
