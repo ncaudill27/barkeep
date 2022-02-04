@@ -8,6 +8,7 @@ import Heading from "~/components/typography/heading";
 
 export const loader: LoaderFunction = ({ params }) => {
   invariant(params.name, "Expected params.name");
+  invariant(params.category, "Expected params.category");
   return getDrink(params.name);
 };
 
