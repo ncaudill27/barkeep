@@ -17,11 +17,19 @@ export async function getDrinks() {
   });
 }
 
+export async function getDrinksByCategory(category: string) {
+  const query =
+    "*[count((categories[]->title)[lower(@) == $category]) > 0]{name}";
+  const params = { category };
+  return client.fetch(query, params).then((drinks: Drink[]) => {
+    return drinks;
+  });
+}
+
 export async function getDrink(name: string) {
   const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients, categories}`;
   const params = { name };
-  const response = await client.fetch(query, params).then((drink: Drink[]) => {
-    return drink;
+  await client.fetch(query, params).then((drinks: Drink[]) => {
+    return drinks[0];
   });
-  return response[0]
 }
