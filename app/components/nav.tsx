@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink } from "remix";
 
 import styled from "styled-components";
@@ -12,7 +13,7 @@ const links = [
 ];
 
 const Nav = () => {
-  const styles = ({ isActive }: any) => ({
+  const styles = ({ isActive }: any): React.CSSProperties => ({
     color: isActive ? "red" : "inherit",
     textDecoration: "none",
     paddingLeft: "12px",
