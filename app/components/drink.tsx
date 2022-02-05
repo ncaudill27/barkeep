@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import type { Drink } from "~/drink";
-import { parseAmount, parseMeasurement } from "~/utils/parseMeasurements";
 
 import Heading from "~/components/typography/heading";
+import Ingredient from "./ingredient";
 
 export default function DrinkComponent({
   name,
@@ -13,14 +13,8 @@ export default function DrinkComponent({
     <div>
       <Heading tag="h2">{name}</Heading>
       <SubHeading tag="h3">Ingredients</SubHeading>
-      {ingredients?.map((ingredient) => (
-        <Ingredient>
-          <Name>{ingredient.name}</Name>
-          <div>{parseAmount(ingredient.amount)}</div>
-          <div>
-            {parseMeasurement(ingredient.measurement, ingredient.amount)}
-          </div>
-        </Ingredient>
+      {ingredients.map((ingredient) => (
+        <Ingredient key={ingredient.name} {...ingredient} />
       ))}
       <SubHeading tag="h3">Glassware</SubHeading>
       {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
@@ -34,13 +28,4 @@ const SubHeading = styled(Heading)`
 
   width: fit-content;
   border-bottom: 1px solid;
-`;
-
-const Ingredient = styled.div`
-  display: flex;
-  gap: 4px;
-`;
-
-const Name = styled.div`
-  margin-right: auto;
 `;

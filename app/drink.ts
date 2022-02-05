@@ -17,6 +17,7 @@ export type Drink = {
   garnish: string;
   glassware: string;
   ingredients: Array<{ name: string; amount: string; measurement: string }>;
+  build:
 };
 
 // abstracted fetch call to SanityClient
@@ -43,7 +44,7 @@ export async function getDrinksByCategory(category: string): Promise<Drink[]> {
 
 // $drink get
 export async function getDrink(name: string): Promise<Drink> {
-  const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients }`;
+  const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients, 'build': body }`;
   const params = { name };
   const [drink] = await sanityFetchDrinks(query, params);
   return drink;

@@ -13,6 +13,7 @@ export const loader: LoaderFunction = ({ params }) => {
 
 export default function Drink() {
   const drink = useLoaderData<Drink>();
+  console.log(drink);
 
   return <DrinkComponent {...drink} />;
 }
