@@ -8,21 +8,27 @@ export default function DrinkComponent({
   name,
   ingredients,
   glassware,
+  build,
 }: Drink) {
   return (
     <div>
       <Heading tag="h2">{name}</Heading>
-      <SubHeading tag="h3">Ingredients</SubHeading>
+      <Subheading>Ingredients</Subheading>
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
-      <SubHeading tag="h3">Glassware</SubHeading>
+      <Subheading>Glassware</Subheading>
       {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
+      <Subheading>Build</Subheading>
     </div>
   );
 }
 
-const SubHeading = styled(Heading)`
+function Subheading(props: any) {
+  return <StyledSubheading tag="h3" {...props} />;
+}
+
+const StyledSubheading = styled(Heading)`
   margin-top: 16px;
   margin-bottom: 8px;
 
