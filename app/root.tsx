@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+
+import GlobalStyles from "./styles/globalStyles";
 import Header from "./components/header";
 
 export const meta: MetaFunction = () => {
@@ -24,6 +26,7 @@ export default function App() {
         {typeof document === "undefined" ? "__STYLES__" : null}
       </head>
       <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+        <GlobalStyles />
         <Header />
         <Outlet />
         <ScrollRestoration />
