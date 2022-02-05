@@ -13,6 +13,7 @@ export default createGlobalStyle`
   }
   html, body {
     height: 100%;
+    font-family: system-ui, sans-serif;
   }
   body {
     line-height: 1.5;

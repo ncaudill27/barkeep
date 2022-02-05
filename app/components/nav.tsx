@@ -33,6 +33,8 @@ const Nav = () => {
 
 const Wrapper = styled.nav`
   display: flex;
+  overflow-x: auto;
+  padding-bottom: 8px;
 `;
 
 export default Nav;

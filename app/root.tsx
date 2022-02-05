@@ -8,11 +8,13 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 
+import Layout from "./components/layout";
 import GlobalStyles from "./styles/globalStyles";
 import Header from "./components/header";
+import Nav from "./components/nav";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Barkeep" };
 };
 
 export default function App() {
@@ -25,14 +27,16 @@ export default function App() {
         <Links />
         {typeof document === "undefined" ? "__STYLES__" : null}
       </head>
-      <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+      <Layout>
         <GlobalStyles />
         <Header />
+        <Nav />
+
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
-      </body>
+      </Layout>
     </html>
   );
 }
