@@ -23,6 +23,7 @@ export default createGlobalStyle`
     ---------- */
     --color-cream: hsl(30, 53%, 93%);
     --color-brown: hsl(6, 38%, 44%);
+    --color-brown-light: hsl(6, 33%, 54%);
     --color-brown-dark: hsl(6, 33%, 34%);
     --color-brown-darkest: hsl(6, 38%, 24%);
     --color-green: hsl(64, 35%, 39%);
