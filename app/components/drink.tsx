@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import type { Drink } from "~/drink";
 
-import Heading from "~/components/typography/heading";
+import Heading from "./typography/heading";
+import Flex, { FlexChild } from "./flex";
 import Ingredient from "./ingredient";
 import BuildPortableText from "./buildPortableText";
 
@@ -9,6 +10,7 @@ export default function DrinkComponent({
   name,
   ingredients,
   glassware,
+  garnish,
   build,
 }: Drink) {
   console.log(build);
@@ -20,10 +22,22 @@ export default function DrinkComponent({
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
-      <Subheading>Glassware</Subheading>
-      {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
-      <Subheading>Build</Subheading>
-      <BuildPortableText value={build} />
+      <Flex justify="space-between">
+        <FlexChild flex="1">
+          <Subheading>Glassware</Subheading>
+          {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
+        </FlexChild>
+        <FlexChild flex="1">
+          <Subheading>Garnish</Subheading>
+          {garnish}
+        </FlexChild>
+      </Flex>
+      {build?.length > 0 && (
+        <>
+          <Subheading>Build</Subheading>
+          <BuildPortableText value={build} />
+        </>
+      )}
     </div>
   );
 }
