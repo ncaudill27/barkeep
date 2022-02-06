@@ -10,6 +10,8 @@ export default function DrinkComponent({
   glassware,
   build,
 }: Drink) {
+  console.log(build);
+  
   return (
     <div>
       <Heading tag="h2">{name}</Heading>
@@ -20,6 +22,7 @@ export default function DrinkComponent({
       <Subheading>Glassware</Subheading>
       {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
       <Subheading>Build</Subheading>
+      
     </div>
   );
 }

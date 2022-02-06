@@ -2,10 +2,10 @@ export const parseAmount = (amount: string) => {
   let [first, second] = amount.split(" ");
 
   return (
-    <span>
+    <>
       {convertFraction(first)}
       {convertFraction(second)}
-    </span>
+    </>
   );
 };
 

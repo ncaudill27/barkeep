@@ -1,24 +1,19 @@
 import styled from "styled-components";
+import type { Ingredient } from "~/drink";
 
 import { parseAmount, parseMeasurement } from "~/utils/parseMeasurements";
-
-type IngredientProps = {
-  name: string;
-  amount: string;
-  measurement: string;
-};
 
 export default function Ingredient({
   name,
   amount,
   measurement,
   ...props
-}: IngredientProps) {
+}: Ingredient) {
   return (
     <StyledIngredient {...props}>
       <Name>{name}</Name>
-      <div>{parseAmount(amount)}</div>
-      <div>{parseMeasurement(measurement, amount)}</div>
+      <span>{amount && parseAmount(amount)}</span>
+      <span>{amount && parseMeasurement(measurement, amount)}</span>
     </StyledIngredient>
   );
 }

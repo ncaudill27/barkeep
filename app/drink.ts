@@ -12,12 +12,18 @@ function parseCategoryParam(param: string): string {
     return "*[count((categories[]->title)[lower(@) == $category]) > 0]{name}";
 }
 
+export type Ingredient = {
+  name: string;
+  amount: string;
+  measurement: string;
+};
+
 export type Drink = {
   name: string;
   active: boolean;
   garnish: string;
   glassware: string;
-  ingredients: Array<{ name: string; amount: string; measurement: string }>;
+  ingredients: Array<Ingredient>;
   build: Array<PortableTextProps>;
 };
 
