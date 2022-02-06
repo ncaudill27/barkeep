@@ -26,6 +26,8 @@ export default createGlobalStyle`
     --color-brown-dark: hsl(6, 33%, 34%);
     --color-brown-darkest: hsl(6, 38%, 24%);
     --color-green: hsl(64, 35%, 39%);
+    --color-green-dark: hsl(64, 30%, 29%);
+    --color-green-darkest: hsl(64, 35%, 19%);
     --color-pink: hsl(352, 72%, 86%);
     --color-yellow: hsl(46, 100%, 50%);
     --color-orange: hsl(13, 95%, 60%);

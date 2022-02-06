@@ -5,11 +5,11 @@ import styled from "styled-components";
 type NavLink = {
   href: string;
   text: string;
-  category: string | undefined;
+  category: string;
 };
 
 export default function NavLink({ href, text, category }: NavLink) {
-  const isActive = (slug: string | undefined, current: string) => {
+  const isActive = (slug: string, current: string) => {
     return (slug || "") === current;
   };
 
@@ -18,8 +18,9 @@ export default function NavLink({ href, text, category }: NavLink) {
       asChild
       value={href.slice(1)}
       style={{
-        "--color": !isActive(category, href.slice(1))
-          ? "var(--color-brown-dark)"
+        "--color": isActive(category, href.slice(1)) ? "white" : "inherit",
+        "--background": isActive(category, href.slice(1))
+          ? "var(--color-green)"
           : "inherit",
       }}
     >
@@ -33,12 +34,15 @@ export default function NavLink({ href, text, category }: NavLink) {
 interface Trigger {
   style: {
     "--color": string;
+    "--background": string;
   };
 }
 
 const StyledTrigger = styled(Trigger)<Trigger>`
   padding-left: 12px;
   padding-right: 12px;
+  background-color: var(--background);
+
   color: var(--color);
   text-decoration: none;
   font-size: ${18 / 16}rem;
