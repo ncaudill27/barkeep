@@ -1,7 +1,8 @@
-import { Link, useLoaderData } from "remix";
+import { useLoaderData } from "remix";
 import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 import type { LoaderFunction } from "remix";
+import DrinkList from "~/components/drinkList";
 
 export const loader: LoaderFunction = () => {
   return getDrinks();
@@ -10,13 +11,5 @@ export const loader: LoaderFunction = () => {
 export default function Index() {
   const drinks = useLoaderData<Drink[]>();
 
-  return (
-    <ul>
-      {drinks.map((drink) => (
-        <li key={drink.name}>
-          <Link to={`/drinks/${drink.name}`}>{drink.name}</Link>
-        </li>
-      ))}
-    </ul>
-  );
+  return <DrinkList drinks={drinks} />;
 }

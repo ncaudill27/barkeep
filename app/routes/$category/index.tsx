@@ -1,8 +1,10 @@
-import { useLoaderData, Link } from "remix";
+import { useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import { getDrinksByCategory } from "~/drink";
 import type { Drink } from "~/drink";
 import invariant from "tiny-invariant";
+
+import DrinkList from "~/components/drinkList";
 
 export const loader: LoaderFunction = ({ params }) => {
   invariant(params.category, "Expected params.category");
@@ -12,13 +14,5 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Drink() {
   const drinks = useLoaderData<Drink[]>();
 
-  return (
-      <ul>
-        {drinks.map((drink) => (
-          <li key={drink.name}>
-            <Link to={drink.name}>{drink.name}</Link>
-          </li>
-        ))}
-      </ul>
-  );
+  return <DrinkList drinks={drinks} />;
 }

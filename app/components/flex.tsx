@@ -72,7 +72,7 @@ type FlexChildProps = {
   children: React.ReactChild | React.ReactChild[];
 };
 
-export const FlexChild = ({ flex, children, ...props }: FlexChildProps) => {
+export const FlexChild = ({ flex, ...props }: FlexChildProps) => {
   return (
     <StyledFlexChild
       style={{
