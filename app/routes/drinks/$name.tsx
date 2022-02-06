@@ -1,10 +1,11 @@
-import { useLoaderData } from "remix";
+import { useLoaderData, useParams } from "remix";
 import type { LoaderFunction } from "remix";
 import { getDrink } from "~/drink";
 import type { Drink } from "~/drink";
 import invariant from "tiny-invariant";
 
 import DrinkComponent from "~/components/drink";
+import { Content } from "@radix-ui/react-tabs";
 
 export const loader: LoaderFunction = ({ params }) => {
   invariant(params.name, "Expected params.name");
@@ -13,6 +14,11 @@ export const loader: LoaderFunction = ({ params }) => {
 
 export default function Drink() {
   const drink = useLoaderData<Drink>();
+  const params = useParams();
 
-  return <DrinkComponent {...drink} />;
+  return (
+    <Content value={params.category || ""}>
+      <DrinkComponent {...drink} />
+    </Content>
+  );
 }

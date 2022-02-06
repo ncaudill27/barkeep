@@ -5,8 +5,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useParams,
 } from "remix";
 import type { MetaFunction } from "remix";
+import { Root } from "@radix-ui/react-tabs";
 
 import Layout from "./components/layout";
 import GlobalStyles from "./styles/globalStyles";
@@ -18,6 +20,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function App() {
+  const params = useParams();
+
   return (
     <html lang="en">
       <head>
@@ -30,9 +34,10 @@ export default function App() {
       <Layout>
         <GlobalStyles />
         <Header />
-        <Nav />
-
-        <Outlet />
+        <Root value={params.category || ""} activationMode="manual">
+          <Nav />
+          <Outlet />
+        </Root>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
