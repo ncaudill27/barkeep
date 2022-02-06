@@ -18,9 +18,11 @@ export default function NavLink({ href, text, category }: NavLink) {
       asChild
       value={href.slice(1)}
       style={{
-        "--color": isActive(category, href.slice(1)) ? "white" : "inherit",
+        "--color": isActive(category, href.slice(1))
+          ? "var(--color-yellow)"
+          : "inherit",
         "--background": isActive(category, href.slice(1))
-          ? "var(--color-green)"
+          ? "var(--color-brown)"
           : "inherit",
       }}
     >

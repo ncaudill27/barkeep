@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import FilterRadio from "./filterRadio";
 
 export default function FilterPopover() {
   return (
@@ -22,9 +23,9 @@ export default function FilterPopover() {
           </svg>
         </IconButton>
       </Trigger>
-      <StyledContent sideOffset={4} collisionTolerance={8}>
+      <Content sideOffset={4}>
         <Arrow />
-        <StyledClose aria-label="Close">
+        <CloseButton aria-label="Close">
           <svg
             width="15"
             height="15"
@@ -39,17 +40,16 @@ export default function FilterPopover() {
               clipRule="evenodd"
             ></path>
           </svg>
-        </StyledClose>
-        Lots of content
-      </StyledContent>
+        </CloseButton>
+        Filter options
+        <FilterRadio />
+      </Content>
     </Popover>
   );
 }
 
 const Popover = PopoverPrimitive.Root;
 const Trigger = PopoverPrimitive.Trigger;
-const Content = PopoverPrimitive.Content;
-const Close = PopoverPrimitive.Close;
 
 const IconButton = styled.button`
   all: unset;
@@ -69,9 +69,9 @@ const IconButton = styled.button`
   }
 `;
 
-const StyledContent = styled(PopoverPrimitive.Content)`
+const Content = styled(PopoverPrimitive.Content)`
   padding: 16px;
-  margin-left: 18px;
+  margin-left: 17px;
   position: relative;
   background-color: var(--color-brown);
   color: white;
@@ -82,7 +82,7 @@ const Arrow = styled(PopoverPrimitive.Arrow)`
   fill: var(--color-brown);
 `;
 
-const StyledClose = styled(PopoverPrimitive.Close)`
+const CloseButton = styled(PopoverPrimitive.Close)`
   all: unset;
   border-radius: 50%;
   height: 25px;
