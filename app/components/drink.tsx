@@ -13,8 +13,6 @@ export default function DrinkComponent({
   garnish,
   build,
 }: Drink) {
-  console.log(build);
-
   return (
     <div>
       <Heading tag="h2">{name}</Heading>
