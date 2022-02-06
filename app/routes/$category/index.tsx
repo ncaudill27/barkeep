@@ -14,10 +14,10 @@ export const loader: LoaderFunction = ({ params }) => {
 
 export default function Drink() {
   const drinks = useLoaderData<Drink[]>();
-  const params = useParams();
+  const { category = "" } = useParams();
 
   return (
-    <Content value={params.category || ""}>
+    <Content value={category}>
       <DrinkList drinks={drinks} />
     </Content>
   );

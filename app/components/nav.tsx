@@ -14,17 +14,13 @@ const links = [
 ];
 
 const Nav = () => {
-  const params = useParams();
-
-  const isActive = (slug: string | undefined, current: string) => {
-    return (slug || "") === current;
-  };
+  const { category = "" } = useParams();
 
   return (
     <List>
       <Wrapper>
         {links.map((link) => (
-          <NavLink key={link.href} category={params.category} {...link} />
+          <NavLink key={link.href} category={category} {...link} />
         ))}
       </Wrapper>
     </List>

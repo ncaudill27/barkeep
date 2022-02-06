@@ -20,7 +20,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function App() {
-  const params = useParams();
+  const { category = "" } = useParams();
 
   return (
     <html lang="en">
@@ -34,7 +34,7 @@ export default function App() {
       <Layout>
         <GlobalStyles />
         <Header />
-        <Root value={params.category || ""} activationMode="manual">
+        <Root value={category} activationMode="manual">
           <Nav />
           <Outlet />
         </Root>
