@@ -24,7 +24,7 @@ export type Drink = {
   garnish: string;
   glassware: string;
   ingredients: Array<Ingredient>;
-  build: PortableTextBlockComponent;
+  build: Array<PortableTextBlockComponent>;
 };
 
 // abstracted fetch call to SanityClient
