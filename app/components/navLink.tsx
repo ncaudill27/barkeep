@@ -18,7 +18,9 @@ export default function NavLink({ href, text, category }: NavLink) {
       asChild
       value={href.slice(1)}
       style={{
-        "--color": isActive(category, href.slice(1)) ? "red" : "inherit",
+        "--color": !isActive(category, href.slice(1))
+          ? "var(--color-brown-dark)"
+          : "inherit",
       }}
     >
       <RemixNavLink key={href} to={href}>
@@ -39,4 +41,5 @@ const StyledTrigger = styled(Trigger)<Trigger>`
   padding-right: 12px;
   color: var(--color);
   text-decoration: none;
+  font-size: ${18 / 16}rem;
 `;

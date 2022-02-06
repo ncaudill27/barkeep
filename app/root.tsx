@@ -32,6 +32,16 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          // crossOrigin
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400&display=swap"
+          rel="stylesheet"
+        />
         {typeof document === "undefined" ? "__STYLES__" : null}
       </head>
       <Layout>

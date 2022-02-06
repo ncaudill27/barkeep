@@ -21,21 +21,15 @@ export default createGlobalStyle`
     /* ----------
     COLOR PALETTE
     ---------- */
-    /* --color-text: hsl(183deg, 18%, 25%);//#252525
-    --color-text-tint: hsl(183deg, 18%, 40%);
-    --color-text-shade: hsl(183deg, 18%, 15%);
-    --color-text-transparent: hsl(183deg, 28%, 88%);//#D8E8E9 color based on color text at 0.1 alpha
-    --color-text-transparent-2: hsl(183deg, 21%, 85%);//#D0DFE0 color based on color text at 0.15 alpha
-    --color-text-transparent-3: hsl(184deg, 18%, 81%);//#C6D6D7 color based on color text at 0.2 alpha
-    --color-background: hsl(183deg, 58%, 95%);//#ebf9fa
-    --color-background-alt: hsl(213deg, 50%, 89%);
-    --color-background-io: hsl(0deg, 0%, 97%);
-    --color-primary: hsl(213deg, 100%, 43%);
-    --color-primary-muted: hsl(213deg, 66%, 63%);
-    --color-primary-shade: hsl(213deg, 100%, 23%);
-    --color-secondary: hsl(3deg, 100%, 43%);
-    --color-secondary-muted: hsl(3deg, 66%, 79%);
-    --color-secondary-darkened: hsl(3deg, 100%, 30%); */
+    --color-cream: hsl(30, 53%, 93%);
+    --color-brown: hsl(6, 38%, 44%);
+    --color-brown-dark: hsl(6, 33%, 34%);
+    --color-brown-darkest: hsl(6, 38%, 24%);
+    --color-green: hsl(64, 35%, 39%);
+    --color-pink: hsl(352, 72%, 86%);
+    --color-yellow: hsl(46, 100%, 50%);
+    --color-orange: hsl(13, 95%, 60%);
+
     /* ----------
     BASE TYPOGRAPHY RULES
     ---------- */
@@ -45,7 +39,8 @@ export default createGlobalStyle`
     --font-weight-medium: 500;
     --font-weight-regular: 400;
     --font-weight-light: 300;
-    --font-family-primary: "Rubik", "Asap", "DejaVu Sans", "Verdana", "sans‑serif";
+    --font-weight-extra-light: 200;
+    --font-family-primary: "Spectral", "sans‑serif";
     --font-family-secondary: "Open Sans", "Segoe UI", "Apple SD Gothic Neo", "Lucida Grande", "Lucida Sans Unicode", "sans‑serif";
     --font-family-code: "Source Code Pro", "Fira Mono", "monospace";
   }
@@ -62,6 +57,8 @@ export default createGlobalStyle`
   html, body {
     height: 100%;
     font-family: system-ui, sans-serif;
+    background-color: var(--color-cream);
+    color: var(--color-brown-dark);
   }
   body {
     line-height: 1.5;
@@ -76,6 +73,13 @@ export default createGlobalStyle`
   }
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
+  }
+  * {
+    &:focus {
+      outline: none;
+      border-radius: 2px;
+      box-shadow: 0 0 0 2px var(--color-orange);
+    }
   }
   #root {
     isolation: isolate;

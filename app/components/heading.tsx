@@ -25,17 +25,24 @@ const Heading = ({ tag, ...props }: HeadingProps) => {
   return <Tag {...props} />;
 };
 
-const PrimaryHeading = styled.h1`
-  font-size: ${40 / 16}rem;
+const HeadingBase = styled.h1`
+  color: var(--color-brown-darkest);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-light);
+  line-height: 1.1;
 `;
 
-const SecondaryHeading = styled.h2`
+const PrimaryHeading = styled(HeadingBase)`
+  font-size: ${48 / 16}rem;
+`;
+
+const SecondaryHeading = styled(HeadingBase)`
   font-size: ${28 / 16}rem;
 `;
 
-const TertiaryHeading = styled.h3`
+const TertiaryHeading = styled(HeadingBase)`
   font-size: ${20 / 16}rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-regular);
 `;
 
 export default Heading;

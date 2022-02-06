@@ -8,8 +8,8 @@ const links = [
   { href: "/", text: "All" },
   { href: "/gin", text: "Gin" },
   { href: "/agave", text: "Agave" },
-  { href: "/whiskey", text: "Whiskey" },
   { href: "/rum", text: "Rum" },
+  { href: "/whiskey", text: "Whiskey" },
   { href: "/other", text: "Other" },
 ];
 
@@ -29,11 +29,10 @@ const Nav = () => {
 
 const Wrapper = styled.nav`
   padding-top: 8px;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
   padding-left: 2px;
   margin-bottom: 16px;
 
-  display: flex;
   overflow-x: auto;
 `;
 
