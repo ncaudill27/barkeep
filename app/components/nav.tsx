@@ -17,13 +17,13 @@ const Nav = () => {
   const { category = "" } = useParams();
 
   return (
-    <List>
-      <Wrapper>
+    <Wrapper>
+      <List aria-label="Navigate drink categories">
         {links.map((link) => (
           <NavLink key={link.href} category={category} {...link} />
         ))}
-      </Wrapper>
-    </List>
+      </List>
+    </Wrapper>
   );
 };
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Heading from "./typography/heading";
+import Heading from "./heading";
 
 const Header = () => {
   return (

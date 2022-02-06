@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import type { Drink } from "~/drink";
 
-import Heading from "./typography/heading";
+import Heading from "./heading";
 import Flex, { FlexChild } from "./flex";
 import Ingredient from "./ingredient";
 import BuildPortableText from "./buildPortableText";

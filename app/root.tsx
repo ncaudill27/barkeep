@@ -16,7 +16,10 @@ import Header from "./components/header";
 import Nav from "./components/nav";
 
 export const meta: MetaFunction = () => {
-  return { title: "Barkeep" };
+  return {
+    title: "Barkeep",
+    description: "Every bartender's favorite cheat sheet.",
+  };
 };
 
 export default function App() {
