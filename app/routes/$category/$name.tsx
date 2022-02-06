@@ -4,7 +4,6 @@ import { getDrink } from "~/drink";
 import type { Drink } from "~/drink";
 import invariant from "tiny-invariant";
 
-import { Content } from "@radix-ui/react-tabs";
 import DrinkComponent from "~/components/drink";
 
 export const loader: LoaderFunction = ({ params }) => {
@@ -14,11 +13,6 @@ export const loader: LoaderFunction = ({ params }) => {
 
 export default function Drink() {
   const drink = useLoaderData<Drink>();
-  const { category = "" } = useParams();
 
-  return (
-    <Content value={category}>
-      <DrinkComponent {...drink} />
-    </Content>
-  );
+  return <DrinkComponent {...drink} />;
 }

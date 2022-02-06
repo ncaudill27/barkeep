@@ -8,7 +8,7 @@ import {
   useParams,
 } from "remix";
 import type { MetaFunction } from "remix";
-import { Root } from "@radix-ui/react-tabs";
+import { Content, Root } from "@radix-ui/react-tabs";
 
 import Layout from "./components/layout";
 import GlobalStyles from "./styles/globalStyles";
@@ -49,7 +49,9 @@ export default function App() {
         <Header />
         <Root value={category} activationMode="manual">
           <Nav />
-          <Outlet />
+          <Content value={category}>
+            <Outlet />
+          </Content>
         </Root>
         <ScrollRestoration />
         <Scripts />
