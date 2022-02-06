@@ -1,5 +1,5 @@
 import client from "./sanity.server";
-import type { PortableTextProps } from "@portabletext/react";
+import type { PortableTextBlockComponent } from "@portabletext/react";
 import invariant from "tiny-invariant";
 
 // helper function used in getDrinksByCategory
@@ -24,7 +24,7 @@ export type Drink = {
   garnish: string;
   glassware: string;
   ingredients: Array<Ingredient>;
-  build: Array<PortableTextProps>;
+  build: PortableTextBlockComponent;
 };
 
 // abstracted fetch call to SanityClient
