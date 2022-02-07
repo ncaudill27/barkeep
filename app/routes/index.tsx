@@ -1,21 +1,23 @@
-import { useLoaderData, useSearchParams } from "remix";
-import { getDrinks } from "~/drink";
+import { redirect, useLoaderData } from "remix";
+import { getDrinks, getFilterOptionsFromSearch } from "~/drink";
 import type { Drink } from "~/drink";
-import type { LoaderFunction, ActionFunction } from "remix";
+import type { LoaderFunction } from "remix";
+
 import DrinkList from "~/components/drinkList";
 import FilterPopover from "~/components/filterPopover";
 
 export const loader: LoaderFunction = ({ request }) => {
-  const url = new URL(request.url);
-  const searchParams = new URLSearchParams(url.search);
-  console.log(searchParams.get("filter"));
+  const filterOptions = getFilterOptionsFromSearch(request);
 
-  return getDrinks();
+  if (filterOptions.buildStyle === "all") {
+    return redirect("/");
+  }
+
+  return getDrinks(filterOptions);
 };
 
 export default function Index() {
   const drinks = useLoaderData<Drink[]>();
-  const [params] = useSearchParams();
 
   return (
     <>

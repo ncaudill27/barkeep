@@ -8,27 +8,27 @@ export default function FilterRadio() {
   return (
     <Form method="get">
       <RadioGroup
-        name="filter"
+        name="build-style"
         defaultValue="default"
         aria-label="View density"
       >
         <Flex align="center" gap={0}>
-          <RadioGroupRadio value="default" id="r1">
+          <RadioGroupRadio value="all" id="r1">
             <RadioGroupIndicator />
           </RadioGroupRadio>
-          <Label htmlFor="r1">Default</Label>
+          <Label htmlFor="r1">All</Label>
         </Flex>
         <Flex align="center" gap={0}>
-          <RadioGroupRadio value="comfortable" id="r2">
+          <RadioGroupRadio value="shaken" id="r2">
             <RadioGroupIndicator />
           </RadioGroupRadio>
-          <Label htmlFor="r2">Comfortable</Label>
+          <Label htmlFor="r2">Shaken</Label>
         </Flex>
         <Flex align="center" gap={0}>
-          <RadioGroupRadio value="compact" id="r3">
+          <RadioGroupRadio value="stirred" id="r3">
             <RadioGroupIndicator />
           </RadioGroupRadio>
-          <Label htmlFor="r3">Compact</Label>
+          <Label htmlFor="r3">Stirred</Label>
         </Flex>
         <button type="submit">Filter</button>
       </RadioGroup>
