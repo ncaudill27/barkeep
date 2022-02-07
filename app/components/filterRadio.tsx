@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import { Form } from "remix";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 
 import Flex from "./flex";
 
 export default function FilterRadio() {
   return (
-    <form>
-      <RadioGroup defaultValue="default" aria-label="View density">
+    <Form method="get">
+      <RadioGroup
+        name="filter"
+        defaultValue="default"
+        aria-label="View density"
+      >
         <Flex align="center" gap={0}>
           <RadioGroupRadio value="default" id="r1">
             <RadioGroupIndicator />
@@ -25,8 +30,9 @@ export default function FilterRadio() {
           </RadioGroupRadio>
           <Label htmlFor="r3">Compact</Label>
         </Flex>
+        <button type="submit">Filter</button>
       </RadioGroup>
-    </form>
+    </Form>
   );
 }
 
