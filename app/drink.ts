@@ -19,15 +19,20 @@ export type Ingredient = {
 
 type SanityQueryProps = {
   query: string;
-  params?: FilterOptions;
+  params?: SanityParamProps;
+};
+
+type SanityParamProps = {
+  name?: string;
+  buildStyle?: string | null;
+  array?: string[];
 };
 
 export type FilterOptions = {
   buildStyle?: string | null;
-  category?: string | null;
-  name?: string;
-  array?: string[];
+  category?: string;
 };
+
 // helper function used in getDrinksByCategory
 function getFilteredCategoryArray(category: string): Array<string> {
   let filterOptions = [category];
@@ -70,11 +75,9 @@ export async function getDrinks({
     ? "*[count((categories[]->title)[lower(@) == $buildStyle]) > 0] {name}"
     : '*[_type == "dinnerCocktail"] {name}';
 
-  const filterParams = {
-    buildStyle,
-  };
+  const filterParams = { buildStyle };
 
-  const requestObj = {
+  const requestObj: SanityQueryProps = {
     query,
     params: filterParams,
   };
@@ -84,7 +87,7 @@ export async function getDrinks({
 
 // $category index
 export async function getDrinksByCategory({
-  category,
+  category = "",
   buildStyle,
 }: FilterOptions): Promise<Drink[]> {
   const isFilteredQuery = !!buildStyle;
