@@ -30,7 +30,7 @@ export default function FilterRadio() {
           </RadioGroupRadio>
           <Label htmlFor="r3">Stirred</Label>
         </Flex>
-        <button type="submit">Filter</button>
+        <StyledButton type="submit">Filter</StyledButton>
       </RadioGroup>
     </Form>
   );
@@ -78,9 +78,31 @@ const RadioGroupRadio = StyledRadio;
 const RadioGroupIndicator = StyledIndicator;
 
 const Label = styled.label`
-  color: white;
+  color: inherit;
   font-size: 15;
   line-height: 1;
   user-select: none;
   padding-left: 15;
+`;
+
+const StyledButton = styled.button`
+  all: unset;
+  display: block;
+  margin-top: 12px;
+  margin-left: -8px;
+  margin-right: -8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  border-radius: 5px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+
+  text-align: center;
+  background-color: white;
+  color: var(--color-brown);
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-orange);
+  }
 `;

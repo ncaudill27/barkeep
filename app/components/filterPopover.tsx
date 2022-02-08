@@ -6,7 +6,7 @@ import Heading from "./heading";
 
 export default function FilterPopover() {
   return (
-    <Popover>
+    <Popover open>
       <Trigger asChild>
         <IconButton aria-label="Filter cocktails">
           <VisuallyHidden>Open filter options</VisuallyHidden>
@@ -44,7 +44,7 @@ export default function FilterPopover() {
             ></path>
           </svg>
         </CloseButton>
-        <Title>Filter options</Title>
+        <Title>Build type</Title>
         <FilterRadio />
       </Content>
     </Popover>
@@ -53,7 +53,7 @@ export default function FilterPopover() {
 
 const Title = styled.h4`
   margin-bottom: 8px;
-  font-weight: 500px;
+  font-weight: 400;
 `;
 
 const Popover = PopoverPrimitive.Root;
@@ -65,7 +65,6 @@ const IconButton = styled.button`
   right: 16px;
   width: 40px;
   height: 40px;
-  margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +80,7 @@ const IconButton = styled.button`
 
 const Content = styled(PopoverPrimitive.Content)`
   padding: 24px 16px;
-  border: 1px solid;
+  padding-bottom: 8px;
   background-color: var(--color-brown);
   color: white;
   border: 2px solid var(--color-yellow);
@@ -99,10 +98,10 @@ const CloseButton = styled(PopoverPrimitive.Close)`
   border-radius: 50%;
   height: 25px;
   width: 25px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: inherit;
   position: absolute;
   top: 5px;
   right: 5px;
