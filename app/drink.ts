@@ -32,7 +32,10 @@ export type FilterOptions = {
   buildStyle?: string | null;
 };
 
-export function filterDrinks(drinks: Drink[], { buildStyle }: FilterOptions) {
+export function filterDrinks(
+  drinks: Drink[],
+  { buildStyle }: FilterOptions
+): Drink[] {
   if (!buildStyle) return drinks;
 
   return drinks.filter((drink) =>

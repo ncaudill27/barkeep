@@ -20,6 +20,7 @@ export default function DrinkList({ drinks }: DrinkListProps) {
 
 const StyledList = styled.ul`
   padding: 0;
+  padding-bottom: 40px;
   list-style: none;
 `;
 

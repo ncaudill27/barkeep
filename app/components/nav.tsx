@@ -28,14 +28,13 @@ const Nav = () => {
 };
 
 const RootWrapper = styled.nav`
-  bottom: 0;
-  left: 0;
-  padding-top: 8px;
-  padding-bottom: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   margin-left: -16px;
+  margin-right: -16px;
+  margin-bottom: 24px; 
 
   overflow-x: scroll;
-  overflow-y: hidden;
 `;
 
 export default Nav;

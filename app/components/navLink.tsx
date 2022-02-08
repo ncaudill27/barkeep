@@ -10,7 +10,7 @@ type NavLink = {
 
 export default function NavLink({ href, text, category }: NavLink) {
   const isActive = (slug: string, current: string) => {
-    return (slug || "") === current;
+    return (slug || "") === current.slice(1);
   };
 
   return (
@@ -18,10 +18,8 @@ export default function NavLink({ href, text, category }: NavLink) {
       asChild
       value={href.slice(1)}
       style={{
-        "--color": isActive(category, href.slice(1))
-          ? "var(--color-yellow)"
-          : "inherit",
-        "--background": isActive(category, href.slice(1))
+        "--color": isActive(category, href) ? "var(--color-yellow)" : "inherit",
+        "--background": isActive(category, href)
           ? "var(--color-brown)"
           : "inherit",
       }}
@@ -41,7 +39,7 @@ interface Trigger {
 }
 
 const StyledTrigger = styled(Trigger)<Trigger>`
-  padding: 16px 24px;
+  padding: 10px 24px;
   background-color: var(--background);
 
   color: var(--color);
