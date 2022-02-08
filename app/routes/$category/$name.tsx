@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "remix";
+import { useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import { getDrink } from "~/drink";
 import type { Drink } from "~/drink";

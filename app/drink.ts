@@ -5,10 +5,11 @@ import invariant from "tiny-invariant";
 export type Drink = {
   name: string;
   active: boolean;
-  garnish: string;
+  garnish?: string;
   glassware: string;
   ingredients: Array<Ingredient>;
-  build: Array<PortableTextBlockComponent>;
+  build?: Array<PortableTextBlockComponent>;
+  categories?: string[];
 };
 
 export type Ingredient = {
@@ -24,14 +25,24 @@ type SanityQueryProps = {
 
 type SanityParamProps = {
   name?: string;
-  buildStyle?: string | null;
   array?: string[];
 };
 
 export type FilterOptions = {
   buildStyle?: string | null;
-  category?: string;
 };
+
+export function filterDrinks(drinks: Drink[], { buildStyle }: FilterOptions) {
+  if (!buildStyle) return drinks;
+
+  return drinks.filter((drink) =>
+    drink.categories?.includes(
+      buildStyle
+        ? buildStyle.slice(0, 1).toUpperCase() + buildStyle.slice(1)
+        : ""
+    )
+  );
+}
 
 // helper function used in getDrinksByCategory
 function getFilteredCategoryArray(category: string): Array<string> {
@@ -41,18 +52,6 @@ function getFilteredCategoryArray(category: string): Array<string> {
   else if (category == "other") filterOptions = ["vodka"];
 
   return filterOptions.filter(Boolean);
-}
-
-export function getFilterOptionsFromSearch(request: Request): FilterOptions {
-  const url = new URL(request.url);
-  const searchParams = new URLSearchParams(url.search);
-  const buildStyle = searchParams.get("build-style");
-
-  const filterOptions: FilterOptions = {
-    buildStyle,
-  };
-
-  return filterOptions;
 }
 
 // abstracted fetch call to SanityClient
@@ -66,55 +65,28 @@ async function sanityFetchDrinks({
 }
 
 // drink index
-export async function getDrinks({
-  buildStyle,
-}: FilterOptions): Promise<Drink[]> {
-  const isFilteredQuery = !!buildStyle;
+export async function getDrinks(): Promise<Drink[]> {
+  const query =
+    '*[_type == "dinnerCocktail"] {name, "categories": categories[]->title}';
 
-  const query = isFilteredQuery
-    ? "*[count((categories[]->title)[lower(@) == $buildStyle]) > 0] {name}"
-    : '*[_type == "dinnerCocktail"] {name}';
-
-  const filterParams = { buildStyle };
-
-  const requestObj: SanityQueryProps = {
-    query,
-    params: filterParams,
-  };
-
-  return await sanityFetchDrinks(requestObj);
+  return await sanityFetchDrinks({ query });
 }
 
 // $category index
-export async function getDrinksByCategory({
-  category = "",
-  buildStyle,
-}: FilterOptions): Promise<Drink[]> {
-  const isFilteredQuery = !!buildStyle;
-
-  const query = isFilteredQuery
-    ? "*[count((categories[]->title)[lower(@) in $array]) > 0 && count((categories[]->title)[lower(@) == $buildStyle]) > 0]"
-    : "*[count((categories[]->title)[lower(@) in $array]) > 0]";
+export async function getDrinksByCategory(category: string): Promise<Drink[]> {
+  const query =
+    '*[count((categories[]->title)[lower(@) in $array]) > 0] {name, "categories": categories[]->title}';
   const array = getFilteredCategoryArray(category);
+  const params = { array };
 
-  const params = { array, buildStyle };
-  const requestObj = {
-    query,
-    params,
-  };
-  console.log("Request OBJ", requestObj);
-  return await sanityFetchDrinks(requestObj);
+  return await sanityFetchDrinks({ query, params });
 }
 
 // $drink get
 export async function getDrink(name: string): Promise<Drink> {
   const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients, 'build': body }`;
   const params = { name };
-  const requestObj = {
-    query,
-    params,
-  };
 
-  const [drink] = await sanityFetchDrinks(requestObj);
+  const [drink] = await sanityFetchDrinks({ query, params });
   return drink;
 }

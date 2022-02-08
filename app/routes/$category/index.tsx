@@ -1,30 +1,26 @@
-import { redirect, useLoaderData } from "remix";
+import { useLoaderData, useSearchParams } from "remix";
 import type { LoaderFunction } from "remix";
-import { getDrinksByCategory, getFilterOptionsFromSearch } from "~/drink";
+import { getDrinksByCategory, filterDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 import invariant from "tiny-invariant";
 
 import DrinkList from "~/components/drinkList";
 import FilterPopover from "~/components/filterPopover";
 
-export const loader: LoaderFunction = ({ params, request }) => {
+export const loader: LoaderFunction = ({ params }) => {
   invariant(params.category, "Expected params.category");
-  const { buildStyle } = getFilterOptionsFromSearch(request);
-
-  if (buildStyle === "all") {
-    return redirect(`/${params.category}`);
-  }
-
-  return getDrinksByCategory({ category: params.category, buildStyle });
+  return getDrinksByCategory(params.category);
 };
 
 export default function Drink() {
   const drinks = useLoaderData<Drink[]>();
+  const [params] = useSearchParams();
+  const buildStyle = params.get("build-style");
 
   return (
     <>
       <FilterPopover />
-      <DrinkList drinks={drinks} />
+      <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />
     </>
   );
 }
