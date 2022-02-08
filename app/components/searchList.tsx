@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { filterDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 import { TextInput } from "./searchInput";
+import { Link } from "remix";
+import BaseLink from "./baseLink";
 
 type SearchListProps = {
   drinks: Drink[];
@@ -17,9 +19,13 @@ export default function SearchList({ drinks, search }: SearchListProps) {
         "--display": isVisible ? "block" : "none",
       }}
     >
-      {filterDrinks(drinks, { search }).map((d) => (
-        <div>{d.name}</div>
-      ))}
+      <StyledList>
+        {filterDrinks(drinks, { search }).map((d) => (
+          <StyledItem>
+            <BaseLink to={`/drinks/${d.name}`}>{d.name}</BaseLink>
+          </StyledItem>
+        ))}
+      </StyledList>
     </Wrapper>
   );
 }
@@ -44,4 +50,13 @@ const Wrapper = styled.div<Wrapper>`
   ${TextInput}:not(:focus) + & {
     display: none;
   }
+`;
+
+const StyledList = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
+
+const StyledItem = styled.li`
+  margin-bottom: 4px;
 `;

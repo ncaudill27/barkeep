@@ -6,7 +6,7 @@ type SearchInputProps = {
   search: string;
   handleChange: ChangeEventHandler;
   children: React.ReactNode;
-}
+};
 
 export default function SearchInput({
   search,
