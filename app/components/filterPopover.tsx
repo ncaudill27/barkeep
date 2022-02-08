@@ -44,7 +44,7 @@ export default function FilterPopover() {
             ></path>
           </svg>
         </CloseButton>
-        <Title>Build type</Title>
+        <Heading tag="h4">Build type</Heading>
         <FilterRadio />
       </Content>
     </Popover>

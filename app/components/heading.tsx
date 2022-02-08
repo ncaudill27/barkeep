@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type HeadingProps = {
-  tag: string;
+  tag: "h1" | "h2" | "h3" | "h4";
   children: string;
 };
 
@@ -17,6 +17,9 @@ const Heading = ({ tag, ...props }: HeadingProps) => {
       break;
     case "h3":
       Tag = TertiaryHeading;
+      break;
+    case "h4":
+      Tag = QuaternaryHeading;
       break;
     default:
       throw new Error('Prop Error: Missing or invalid "tag" prop');
@@ -45,4 +48,8 @@ const TertiaryHeading = styled(HeadingBase)`
   font-weight: var(--font-weight-regular);
 `;
 
+const QuaternaryHeading = styled.h4`
+  margin-bottom: 8px;
+  font-weight: 400;
+`;
 export default Heading;
