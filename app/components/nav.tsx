@@ -17,23 +17,25 @@ const Nav = () => {
   const { category = "" } = useParams();
 
   return (
-    <Wrapper>
-      <List aria-label="Navigate drink categories">
+    <List aria-label="Navigate drink categories" asChild>
+      <RootWrapper>
         {links.map((link) => (
           <NavLink key={link.href} category={category} {...link} />
         ))}
-      </List>
-    </Wrapper>
+      </RootWrapper>
+    </List>
   );
 };
 
-const Wrapper = styled.nav`
+const RootWrapper = styled.nav`
+  bottom: 0;
+  left: 0;
   padding-top: 8px;
-  padding-bottom: 16px;
-  padding-left: 2px;
-  margin-bottom: 16px;
+  padding-bottom: 24px;
+  margin-left: -16px;
 
-  overflow-x: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
 `;
 
 export default Nav;

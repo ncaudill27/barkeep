@@ -41,8 +41,7 @@ interface Trigger {
 }
 
 const StyledTrigger = styled(Trigger)<Trigger>`
-  padding-left: 12px;
-  padding-right: 12px;
+  padding: 16px 24px;
   background-color: var(--background);
 
   color: var(--color);

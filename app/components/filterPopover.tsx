@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import FilterRadio from "./filterRadio";
+import Heading from "./heading";
 
 export default function FilterPopover() {
   return (
     <Popover>
       <Trigger asChild>
         <IconButton aria-label="Filter cocktails">
+          <VisuallyHidden>Open filter options</VisuallyHidden>
           <svg
             width="18"
             height="18"
@@ -23,9 +26,9 @@ export default function FilterPopover() {
           </svg>
         </IconButton>
       </Trigger>
-      <Content sideOffset={4}>
-        <Arrow />
+      <Content>
         <CloseButton aria-label="Close">
+          <VisuallyHidden>Close filter options</VisuallyHidden>
           <svg
             width="15"
             height="15"
@@ -41,18 +44,25 @@ export default function FilterPopover() {
             ></path>
           </svg>
         </CloseButton>
-        Filter options
+        <Title>Filter options</Title>
         <FilterRadio />
       </Content>
     </Popover>
   );
 }
 
+const Title = styled.h4`
+  margin-bottom: 8px;
+  font-weight: 500px;
+`;
+
 const Popover = PopoverPrimitive.Root;
 const Trigger = PopoverPrimitive.Trigger;
 
 const IconButton = styled.button`
   all: unset;
+  position: absolute;
+  right: 16px;
   width: 40px;
   height: 40px;
   margin-bottom: 16px;
@@ -70,16 +80,18 @@ const IconButton = styled.button`
 `;
 
 const Content = styled(PopoverPrimitive.Content)`
-  padding: 16px;
-  margin-left: 17px;
-  position: relative;
+  padding: 24px 16px;
+  border: 1px solid;
   background-color: var(--color-brown);
   color: white;
-`;
+  border: 2px solid var(--color-yellow);
+  border-radius: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 
-const Arrow = styled(PopoverPrimitive.Arrow)`
-  margin-left: 4px;
-  fill: var(--color-brown);
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-orange);
+  }
 `;
 
 const CloseButton = styled(PopoverPrimitive.Close)`
@@ -97,5 +109,8 @@ const CloseButton = styled(PopoverPrimitive.Close)`
 
   &:hover {
     background-color: var(--color-brown);
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-orange);
   }
 `;

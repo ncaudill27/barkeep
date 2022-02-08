@@ -1,4 +1,4 @@
-import { redirect, useLoaderData } from "remix";
+import { redirect, useLoaderData, useSearchParams } from "remix";
 import { getDrinks, getFilterOptionsFromSearch } from "~/drink";
 import type { Drink } from "~/drink";
 import type { LoaderFunction } from "remix";
@@ -18,6 +18,8 @@ export const loader: LoaderFunction = ({ request }) => {
 
 export default function Index() {
   const drinks = useLoaderData<Drink[]>();
+  const [params] = useSearchParams();
+  console.log(params.get("build-style"));
 
   return (
     <>

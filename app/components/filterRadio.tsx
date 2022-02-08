@@ -9,7 +9,7 @@ export default function FilterRadio() {
     <Form method="get">
       <RadioGroup
         name="build-style"
-        defaultValue="default"
+        defaultValue="all"
         aria-label="View density"
       >
         <Flex align="center" gap={0}>
@@ -45,7 +45,7 @@ const StyledRadio = styled(RadioGroupPrimitive.Item)`
   &:hover: {
     background-color: var(--color-cream);
   }
-  &:focus: {
+  &:focus {
     box-shadow: 0 0 0 2px var(--color-orange);
   }
 `;
@@ -57,6 +57,7 @@ const StyledIndicator = styled(RadioGroupPrimitive.Indicator)`
   width: 100%;
   height: 100%;
   position: relative;
+
   &:after {
     content: "";
     display: block;
