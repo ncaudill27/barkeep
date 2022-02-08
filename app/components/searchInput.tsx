@@ -1,23 +1,31 @@
-import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
-import { Form } from "remix";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { ChangeEventHandler } from "react";
 
-export default function SearchInput() {
-  const [value, setValue] = useState("");
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setValue(e?.target?.value);
+interface SearchInputProps {
+  search: string;
+  handleChange: ChangeEventHandler;
+}
 
+export default function SearchInput({
+  search,
+  handleChange,
+}: SearchInputProps) {
   return (
-    <Form>
-      <Wrapper>
-        <VisuallyHidden>Search drinks</VisuallyHidden>
-        <IconWrapper>
-          <Icon />
-        </IconWrapper>
-        <TextInput type="text" name="search" placeholder="Search drink..." />
-      </Wrapper>
-    </Form>
+    <Wrapper>
+      <VisuallyHidden>Search drink</VisuallyHidden>
+      <IconWrapper>
+        <Icon />
+      </IconWrapper>
+      <TextInput
+        type="text"
+        name="search"
+        placeholder="Search drink..."
+        autoComplete="off"
+        value={search}
+        onChange={handleChange}
+      />
+    </Wrapper>
   );
 }
 

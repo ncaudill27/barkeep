@@ -30,13 +30,26 @@ type SanityParamProps = {
 
 export type FilterOptions = {
   buildStyle?: string | null;
+  search?: string | null;
 };
 
 export function filterDrinks(
   drinks: Drink[],
-  { buildStyle }: FilterOptions
+  { buildStyle, search }: FilterOptions
 ): Drink[] {
-  if (!buildStyle || buildStyle === "all") return drinks;
+  if (buildStyle) {
+    drinks = filterByBuildStyle(drinks, buildStyle);
+  }
+
+  if (search) {
+    drinks = filterBySearch(drinks, search);
+  }
+
+  return drinks;
+}
+
+function filterByBuildStyle(drinks: Drink[], buildStyle: string) {
+  if (buildStyle === "all") return drinks;
 
   return drinks.filter((drink) =>
     drink.categories?.includes(
@@ -45,6 +58,11 @@ export function filterDrinks(
         : ""
     )
   );
+}
+
+function filterBySearch(drinks: Drink[], search: string) {
+  const regex = new RegExp(search);
+  return drinks.filter((drink) => regex.test(drink.name));
 }
 
 // helper function used in getDrinksByCategory
