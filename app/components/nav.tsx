@@ -34,7 +34,7 @@ const RootWrapper = styled.nav`
   margin-right: -16px;
   margin-bottom: 24px; 
 
-  overflow-x: scroll;
+  overflow-x: auto;
 `;
 
 export default Nav;

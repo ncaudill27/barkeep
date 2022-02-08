@@ -6,7 +6,7 @@ import type { LoaderFunction } from "remix";
 import DrinkList from "~/components/drinkList";
 import FilterPopover from "~/components/filterPopover";
 
-export const loader: LoaderFunction = ({ request }) => {
+export const loader: LoaderFunction = () => {
   return getDrinks();
 };
 

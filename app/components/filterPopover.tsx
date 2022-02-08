@@ -6,7 +6,7 @@ import Heading from "./heading";
 
 export default function FilterPopover() {
   return (
-    <Popover open>
+    <Popover>
       <Trigger asChild>
         <IconButton aria-label="Filter cocktails">
           <VisuallyHidden>Open filter options</VisuallyHidden>
@@ -50,11 +50,6 @@ export default function FilterPopover() {
     </Popover>
   );
 }
-
-const Title = styled.h4`
-  margin-bottom: 8px;
-  font-weight: 400;
-`;
 
 const Popover = PopoverPrimitive.Root;
 const Trigger = PopoverPrimitive.Trigger;

@@ -36,7 +36,7 @@ export function filterDrinks(
   drinks: Drink[],
   { buildStyle }: FilterOptions
 ): Drink[] {
-  if (!buildStyle) return drinks;
+  if (!buildStyle || buildStyle === "all") return drinks;
 
   return drinks.filter((drink) =>
     drink.categories?.includes(
