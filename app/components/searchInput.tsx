@@ -2,14 +2,16 @@ import styled from "styled-components";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ChangeEventHandler } from "react";
 
-interface SearchInputProps {
+type SearchInputProps = {
   search: string;
   handleChange: ChangeEventHandler;
+  children: React.ReactNode;
 }
 
 export default function SearchInput({
   search,
   handleChange,
+  children,
 }: SearchInputProps) {
   return (
     <Wrapper>
@@ -25,6 +27,7 @@ export default function SearchInput({
         value={search}
         onChange={handleChange}
       />
+      {children}
     </Wrapper>
   );
 }
@@ -35,7 +38,7 @@ const Wrapper = styled.label`
   color: inherit;
 `;
 
-const TextInput = styled.input`
+export const TextInput = styled.input`
   display: flex;
   align-items: center;
   gap: 8px;

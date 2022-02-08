@@ -61,7 +61,7 @@ function filterByBuildStyle(drinks: Drink[], buildStyle: string) {
 }
 
 function filterBySearch(drinks: Drink[], search: string) {
-  const regex = new RegExp(search);
+  const regex = new RegExp(search, "i");
   return drinks.filter((drink) => regex.test(drink.name));
 }
 
