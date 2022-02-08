@@ -5,6 +5,7 @@ import type { LoaderFunction } from "remix";
 
 import DrinkList from "~/components/drinkList";
 import FilterPopover from "~/components/filterPopover";
+import SearchInput from "~/components/searchInput";
 
 export const loader: LoaderFunction = () => {
   return getDrinks();
@@ -17,6 +18,7 @@ export default function Index() {
 
   return (
     <>
+      <SearchInput />
       <FilterPopover />
       <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />
     </>
