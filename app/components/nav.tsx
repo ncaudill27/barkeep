@@ -32,9 +32,14 @@ const RootWrapper = styled.nav`
   padding-bottom: 12px;
   margin-left: -16px;
   margin-right: -16px;
-  margin-bottom: 24px; 
+  margin-bottom: 24px;
 
   overflow-x: auto;
+
+  @media (min-width: 716px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 export default Nav;

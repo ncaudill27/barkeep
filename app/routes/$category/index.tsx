@@ -5,7 +5,6 @@ import type { Drink } from "~/drink";
 import invariant from "tiny-invariant";
 
 import DrinkList from "~/components/drinkList";
-import FilterPopover from "~/components/filterPopover";
 
 export const loader: LoaderFunction = ({ params }) => {
   invariant(params.category, "Expected params.category");
@@ -19,7 +18,6 @@ export default function Drink() {
 
   return (
     <>
-      <FilterPopover />
       <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />
     </>
   );

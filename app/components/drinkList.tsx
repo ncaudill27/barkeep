@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import type { Drink } from "~/drink";
+
 import BaseLink from "./baseLink";
+import FilterPopover from "~/components/filterPopover";
 
 type DrinkListProps = {
   drinks: Drink[];
@@ -9,6 +11,7 @@ type DrinkListProps = {
 export default function DrinkList({ drinks }: DrinkListProps) {
   return (
     <StyledList>
+      <FilterPopover />
       {drinks.map((drink) => (
         <StyledItem key={drink.name}>
           <BaseLink to={`/drinks/${drink.name}`}>{drink.name}</BaseLink>
@@ -19,6 +22,7 @@ export default function DrinkList({ drinks }: DrinkListProps) {
 }
 
 const StyledList = styled.ul`
+  position: relative;
   padding: 0;
   padding-bottom: 40px;
   list-style: none;

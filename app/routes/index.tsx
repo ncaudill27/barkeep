@@ -1,10 +1,9 @@
-import { Form, useLoaderData, useSearchParams } from "remix";
+import { useLoaderData, useSearchParams } from "remix";
 import { getDrinks, filterDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 import type { LoaderFunction } from "remix";
 
 import DrinkList from "~/components/drinkList";
-import FilterPopover from "~/components/filterPopover";
 import Search from "~/components/search";
 
 export const loader: LoaderFunction = () => {
@@ -20,7 +19,6 @@ export default function Index() {
   return (
     <>
       <Search drinks={drinks} />
-      <FilterPopover />
       <DrinkList drinks={filterDrinks(drinks, { buildStyle, search })} />
     </>
   );

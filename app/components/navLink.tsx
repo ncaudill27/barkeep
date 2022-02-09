@@ -45,4 +45,5 @@ const StyledTrigger = styled(Trigger)<Trigger>`
   color: var(--color);
   text-decoration: none;
   font-size: ${18 / 16}rem;
+  border-bottom: 2px solid var(--color-brown);
 `;

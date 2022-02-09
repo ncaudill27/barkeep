@@ -1,10 +1,5 @@
-import {
-  ChangeEvent,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 import { Form } from "remix";
 import type { Drink } from "~/drink";
 import SearchInput from "./searchInput";
@@ -47,7 +42,7 @@ export default function Search({ drinks }: SearchProps) {
   }, [formEl, search]);
 
   return (
-    <Form ref={formEl}>
+    <StyledForm ref={formEl}>
       <SearchInput
         search={search}
         handleChange={handleChange}
@@ -55,6 +50,10 @@ export default function Search({ drinks }: SearchProps) {
       >
         <SearchList isOpen={resultsOpen} drinks={drinks} search={search} />
       </SearchInput>
-    </Form>
+    </StyledForm>
   );
 }
+
+const StyledForm = styled(Form)`
+  width: min(100%, 35ch);
+`;

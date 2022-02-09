@@ -14,7 +14,7 @@ export default function DrinkComponent({
   build,
 }: Drink) {
   return (
-    <div>
+    <Wrapper>
       <Heading tag="h2">{name}</Heading>
       <Subheading>Ingredients</Subheading>
       {ingredients.map((ingredient) => (
@@ -25,20 +25,26 @@ export default function DrinkComponent({
           <Subheading>Glassware</Subheading>
           {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
         </FlexChild>
-        <FlexChild flex="1">
-          <Subheading>Garnish</Subheading>
-          {garnish}
-        </FlexChild>
+        {garnish && (
+          <FlexChild flex="1">
+            <Subheading>Garnish</Subheading>
+            {garnish}
+          </FlexChild>
+        )}
       </Flex>
-      {build?.length > 0 && (
+      {build && build.length > 0 && (
         <>
           <Subheading>Build</Subheading>
           <BuildPortableText value={build} />
         </>
       )}
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  max-width: 400px;
+`;
 
 function Subheading(props: any) {
   return <StyledSubheading tag="h3" {...props} />;

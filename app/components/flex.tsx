@@ -23,7 +23,7 @@ type FlexProps = {
   gap?: number;
   stack?: boolean;
   wrap?: boolean;
-  children: React.ReactChild[];
+  children: React.ReactNode;
 };
 
 export default function Flex({
