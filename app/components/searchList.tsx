@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import { filterDrinks } from "~/drink";
 import type { Drink } from "~/drink";
-import { TextInput } from "./searchInput";
 import BaseLink from "./baseLink";
 
 type SearchListProps = {
   drinks: Drink[];
   search: string;
+  isOpen: boolean;
 };
 
-export default function SearchList({ drinks, search }: SearchListProps) {
-  const isVisible = search !== "" && drinks.length !== 0;
+export default function SearchList({
+  drinks,
+  search,
+  isOpen,
+}: SearchListProps) {
+  const isVisible = search !== "" && drinks.length !== 0 && isOpen;
 
   return (
     <Wrapper
@@ -21,19 +25,15 @@ export default function SearchList({ drinks, search }: SearchListProps) {
       {isVisible && (
         <StyledList>
           {filterDrinks(drinks, { search }).map((d) => (
-            <SearchLink key={d.name} {...d} />
+            <StyledLink key={d.name} to={`/drinks/${d.name}`}>
+              {d.name}
+            </StyledLink>
           ))}
         </StyledList>
       )}
     </Wrapper>
   );
 }
-
-const SearchLink = ({ name }: Drink) => (
-  <StyledItem>
-    <BaseLink to={`/drinks/${name}`}>{name}</BaseLink>
-  </StyledItem>
-);
 
 type Wrapper = {
   style: {
@@ -44,10 +44,8 @@ type Wrapper = {
 const Wrapper = styled.div<Wrapper>`
   display: var(--display);
   padding: 16px;
+  width: min(100%, 35ch);
   position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
   margin-top: -16px;
   background-color: white;
   z-index: 1;
@@ -58,6 +56,7 @@ const StyledList = styled.ul`
   list-style: none;
 `;
 
-const StyledItem = styled.li`
+const StyledLink = styled(BaseLink)`
+  display: block;
   margin-bottom: 4px;
 `;
