@@ -16,5 +16,5 @@ const StyledList = styled.ol`
   display: block;
   list-style: numbered;
   margin: 0;
-  padding-left: 16px;
+  margin-left: 16px;
 `;
