@@ -96,7 +96,7 @@ export default function MartiniIcon(props: any) {
         stroke="var(--color-pink)"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="4"
+        strokeWidth="5"
       />
       <path
         transform="matrix(4.375,0,0,4.375,70,0)"
@@ -105,7 +105,7 @@ export default function MartiniIcon(props: any) {
         stroke="var(--color-pink)"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="4"
+        strokeWidth="5"
       />
       <path
         transform="matrix(4.375,0,0,4.375,70,0)"
