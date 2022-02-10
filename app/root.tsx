@@ -8,7 +8,7 @@ import {
   useParams,
 } from "remix";
 import type { MetaFunction } from "remix";
-import { Content, Root } from "@radix-ui/react-tabs";
+import { Content, Root } from "./components/radixTabs";
 
 import Layout from "./components/layout";
 import GlobalStyles from "./styles/globalStyles";

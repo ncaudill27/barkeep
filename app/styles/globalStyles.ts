@@ -58,7 +58,6 @@ export default createGlobalStyle`
     margin: 0;
   }
   html, body {
-    height: 100%;
     font-family: system-ui, sans-serif;
     background-color: var(--color-cream);
     color: var(--color-brown-dark);

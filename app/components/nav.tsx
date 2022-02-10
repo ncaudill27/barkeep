@@ -1,6 +1,6 @@
 import { useParams } from "remix";
-import { List } from "@radix-ui/react-tabs";
 
+import { List } from "./radixTabs";
 import styled from "styled-components";
 import NavLink from "./navLink";
 

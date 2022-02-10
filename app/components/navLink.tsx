@@ -1,6 +1,6 @@
 import { NavLink as RemixNavLink } from "remix";
-import { Trigger } from "@radix-ui/react-tabs";
-import styled from "styled-components";
+
+import { Trigger } from "./radixTabs";
 
 type NavLink = {
   href: string;
@@ -14,7 +14,7 @@ export default function NavLink({ href, text, category }: NavLink) {
   };
 
   return (
-    <StyledTrigger
+    <Trigger
       asChild
       value={href.slice(1)}
       style={{
@@ -27,23 +27,6 @@ export default function NavLink({ href, text, category }: NavLink) {
       <RemixNavLink key={href} to={href}>
         {text}
       </RemixNavLink>
-    </StyledTrigger>
+    </Trigger>
   );
 }
-
-interface Trigger {
-  style: {
-    "--color": string;
-    "--background": string;
-  };
-}
-
-const StyledTrigger = styled(Trigger)<Trigger>`
-  padding: 10px 24px;
-  background-color: var(--background);
-
-  color: var(--color);
-  text-decoration: none;
-  font-size: ${18 / 16}rem;
-  border-bottom: 2px solid var(--color-brown);
-`;
