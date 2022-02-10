@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type HeadingProps = {
   tag: "h1" | "h2" | "h3" | "h4";
-  children: string;
+  children: string | React.ReactNode;
 };
 
 const Heading = ({ tag, ...props }: HeadingProps) => {

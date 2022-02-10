@@ -4,7 +4,11 @@ import Heading from "./heading";
 const Header = () => {
   return (
     <Wrapper>
-      <Heading tag="h1">Welcome to Barkeep</Heading>
+      <Heading tag="h1">
+        Barkeep
+        <br />
+        Journal
+      </Heading>
     </Wrapper>
   );
 };

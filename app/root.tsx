@@ -17,7 +17,7 @@ import Nav from "./components/nav";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "Barkeep",
+    title: "A Barkeep Journal",
     description: "Every bartender's favorite cheat sheet.",
   };
 };
