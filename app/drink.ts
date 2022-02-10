@@ -4,9 +4,8 @@ import invariant from "tiny-invariant";
 
 export type Drink = {
   name: string;
-  active: boolean;
   garnish?: string;
-  glassware: string;
+  glassware?: string;
   ingredients: Array<Ingredient>;
   build?: Array<PortableTextBlockComponent>;
   categories?: string[];
@@ -105,7 +104,7 @@ export async function getDrinksByCategory(category: string): Promise<Drink[]> {
 
 // $drink get
 export async function getDrink(name: string): Promise<Drink> {
-  const query = `*[_type == "dinnerCocktail" && name == $name] {name, active, garnish, glassware, ingredients, 'build': body }`;
+  const query = `*[_type == "dinnerCocktail" && name == $name] {name, garnish, glassware, ingredients, 'build': body }`;
   const params = { name };
 
   const [drink] = await sanityFetchDrinks({ query, params });

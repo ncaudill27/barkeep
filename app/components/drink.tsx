@@ -21,10 +21,12 @@ export default function DrinkComponent({
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
       <Flex justify="space-between">
-        <FlexChild flex="1">
-          <Subheading>Glassware</Subheading>
-          {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
-        </FlexChild>
+        {glassware && (
+          <FlexChild flex="1">
+            <Subheading>Glassware</Subheading>
+            {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
+          </FlexChild>
+        )}
         {garnish && (
           <FlexChild flex="1">
             <Subheading>Garnish</Subheading>
