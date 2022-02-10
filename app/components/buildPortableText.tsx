@@ -12,5 +12,9 @@ const portableTextComponents: PortableTextComponents = {
 };
 
 const StyledList = styled.ol`
+  all: unset;
+  display: block;
+  list-style: numbered;
+  margin: 0;
   padding-left: 16px;
 `;

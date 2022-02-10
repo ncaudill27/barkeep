@@ -15,7 +15,6 @@ const RootWrapper = styled.body`
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-
 `;
 
 export default Layout;
