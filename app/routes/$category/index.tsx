@@ -15,15 +15,25 @@ export const meta: MetaFunction = ({ params }) => {
   };
 };
 
-export const loader: LoaderFunction = ({ params }) => {
+export const loader: LoaderFunction = async ({ request, params }) => {
   invariant(params.category, "Expected params.category");
-  return getDrinksByCategory(params.category);
+
+  const url = new URL(request.url);
+  const searchValues = Object.fromEntries(url.searchParams.entries());
+
+  const drinks = await getDrinksByCategory(params.category);
+
+  return {
+    drinks,
+    searchValues: { ...searchValues, buildStyle: searchValues["build-style"] },
+  };
 };
 
 export default function Drink() {
-  const drinks = useLoaderData<Drink[]>();
-  const [params] = useSearchParams();
-  const buildStyle = params.get("build-style");
+  const {
+    drinks,
+    searchValues: { buildStyle },
+  } = useLoaderData();
 
   return <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />;
 }
