@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { KeyboardEventHandler, MouseEventHandler } from "react";
 import styled from "styled-components";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ChangeEventHandler } from "react";
@@ -7,6 +7,7 @@ type SearchInputProps = {
   search: string;
   handleChange: ChangeEventHandler;
   handleClick: MouseEventHandler;
+  handleKeyPress: KeyboardEventHandler;
   children: React.ReactNode;
 };
 
@@ -15,6 +16,7 @@ export default function SearchInput({
   children,
   handleChange,
   handleClick,
+  handleKeyPress,
 }: SearchInputProps) {
   return (
     <Wrapper>
@@ -30,6 +32,7 @@ export default function SearchInput({
         value={search}
         onChange={handleChange}
         onClick={handleClick}
+        onKeyDown={handleKeyPress}
       />
       {children}
     </Wrapper>

@@ -1,20 +1,26 @@
-import { useLoaderData, useSearchParams } from "remix";
+import { useLoaderData } from "remix";
 import { getDrinks, filterDrinks } from "~/drink";
-import type { Drink } from "~/drink";
 import type { LoaderFunction } from "remix";
 
 import DrinkList from "~/components/drinkList";
 import Search from "~/components/search";
 
-export const loader: LoaderFunction = () => {
-  return getDrinks();
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const searchValues = Object.fromEntries(url.searchParams.entries());
+  const drinks = await getDrinks();
+
+  return {
+    drinks,
+    searchValues: { ...searchValues, buildStyle: searchValues["build-style"] },
+  };
 };
 
 export default function Index() {
-  const drinks = useLoaderData<Drink[]>();
-  const [params] = useSearchParams();
-  const buildStyle = params.get("build-style");
-  const search = params.get("search");
+  const {
+    drinks,
+    searchValues: { buildStyle, search },
+  } = useLoaderData();
 
   return (
     <>

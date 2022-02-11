@@ -25,9 +25,5 @@ export default function Drink() {
   const [params] = useSearchParams();
   const buildStyle = params.get("build-style");
 
-  return (
-    <>
-      <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />
-    </>
-  );
+  return <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />;
 }

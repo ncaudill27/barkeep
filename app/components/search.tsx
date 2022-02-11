@@ -1,4 +1,11 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styled from "styled-components";
 import { Form } from "remix";
 import type { Drink } from "~/drink";
@@ -13,12 +20,20 @@ export default function Search({ drinks }: SearchProps) {
   const [resultsOpen, setResultsOpen] = useState(false);
   const formEl = useRef<HTMLFormElement>();
 
+  const handleKeyboardClose = (event: KeyboardEvent) => {
+    const isEscapeKey = event.key === "Escape";
+    const isEnterKey = event.key === "Enter";
+    if (resultsOpen && (isEnterKey || isEscapeKey)) {
+      setResultsOpen(false);
+    }
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setResultsOpen(true);
     setSearch(e.target.value);
   };
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = () => {
     setResultsOpen(true);
   };
 
@@ -47,6 +62,7 @@ export default function Search({ drinks }: SearchProps) {
         search={search}
         handleChange={handleChange}
         handleClick={handleClick}
+        handleKeyPress={handleKeyboardClose}
       >
         <SearchList isOpen={resultsOpen} drinks={drinks} search={search} />
       </SearchInput>
