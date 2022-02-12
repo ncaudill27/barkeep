@@ -2,6 +2,7 @@ import { List } from "./radixTabs";
 import styled from "styled-components";
 
 import NavLink from "./navLink";
+import { motion } from "framer-motion";
 
 const links = [
   { href: "/", text: "All" },
@@ -23,7 +24,7 @@ const Nav = ({ category }: NavProps) => {
 
   return (
     <List aria-label="Navigate drink categories" asChild>
-      <RootWrapper>
+      <RootWrapper layout>
         {links.map((link) => (
           <NavLink
             key={link.href}
@@ -36,7 +37,8 @@ const Nav = ({ category }: NavProps) => {
   );
 };
 
-const RootWrapper = styled.nav`
+const RootWrapper = styled(motion.nav)`
+  display: flex;
   padding-top: 12px;
   padding-bottom: 12px;
   margin-left: -16px;
@@ -50,7 +52,5 @@ const RootWrapper = styled.nav`
     margin-right: 0;
   }
 `;
-
-
 
 export default Nav;
