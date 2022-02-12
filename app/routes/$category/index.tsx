@@ -1,4 +1,4 @@
-import { MetaFunction, useLoaderData, useSearchParams } from "remix";
+import { MetaFunction, useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import { getDrinksByCategory, filterDrinks } from "~/drink";
 import type { Drink } from "~/drink";

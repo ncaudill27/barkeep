@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Form } from "remix";
 import type { Drink } from "~/drink";

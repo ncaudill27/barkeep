@@ -36,7 +36,7 @@ const RootWrapper = styled.nav`
 
   overflow-x: auto;
 
-  @media (min-width: 716px) {
+  @media (min-width: 600px) {
     margin-left: 0;
     margin-right: 0;
   }
