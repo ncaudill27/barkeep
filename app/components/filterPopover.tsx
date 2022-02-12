@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { motion } from "framer-motion";
+
+import { Popover, Trigger, Content, CloseButton } from "./radixPopover";
 import FilterRadio from "./filterRadio";
 import Heading from "./heading";
 
@@ -8,7 +10,7 @@ export default function FilterPopover() {
   return (
     <Popover>
       <Trigger asChild>
-        <IconButton aria-label="Filter cocktails">
+        <IconButton aria-label="Filter cocktails" whileTap={{ scale: 0.9 }}>
           <VisuallyHidden>Open filter options</VisuallyHidden>
           <svg
             width="18"
@@ -51,10 +53,7 @@ export default function FilterPopover() {
   );
 }
 
-const Popover = PopoverPrimitive.Root;
-const Trigger = PopoverPrimitive.Trigger;
-
-const IconButton = styled.button`
+const IconButton = styled(motion.button)`
   all: unset;
   position: absolute;
   right: 16px;
@@ -68,42 +67,6 @@ const IconButton = styled.button`
   border-radius: 50%;
   border: 2px solid var(--color-yellow);
 
-  &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
-  }
-`;
-
-const Content = styled(PopoverPrimitive.Content)`
-  padding: 24px 16px;
-  padding-bottom: 8px;
-  background-color: var(--color-brown);
-  color: white;
-  border: 2px solid var(--color-yellow);
-  border-radius: 10px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-
-  &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
-  }
-`;
-
-const CloseButton = styled(PopoverPrimitive.Close)`
-  all: unset;
-  border-radius: 50%;
-  height: 25px;
-  width: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-
-  &:hover {
-    background-color: var(--color-brown);
-  }
   &:focus {
     box-shadow: 0 0 0 2px var(--color-orange);
   }
