@@ -13,9 +13,11 @@ const links = [
   { href: "/other", text: "Other" },
 ];
 
-const Nav = () => {
-  const { category = "" } = useParams();
+type NavProps = {
+  category: string;
+};
 
+const Nav = ({ category }: NavProps) => {
   return (
     <List aria-label="Navigate drink categories" asChild>
       <RootWrapper>

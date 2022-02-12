@@ -48,7 +48,7 @@ export default function App() {
         <GlobalStyles />
         <Header />
         <Root value={category} activationMode="manual" defaultValue="">
-          <Nav />
+          <Nav category={category} />
           <Content value={category}>
             <Outlet />
           </Content>
