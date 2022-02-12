@@ -1,5 +1,3 @@
-import { useParams } from "remix";
-
 import { List } from "./radixTabs";
 import styled from "styled-components";
 import NavLink from "./navLink";
@@ -13,14 +11,16 @@ const links = [
   { href: "/other", text: "Other" },
 ];
 
-const Nav = () => {
-  const { category = "" } = useParams();
+type NavProps = {
+  category: string;
+};
 
+const Nav = ({ category }: NavProps) => {
   return (
     <List aria-label="Navigate drink categories" asChild>
       <RootWrapper>
         {links.map((link) => (
-          <NavLink key={link.href} category={category} {...link} />
+          <NavLink key={link.href} current={category} {...link} />
         ))}
       </RootWrapper>
     </List>
