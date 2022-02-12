@@ -1,32 +1,36 @@
 import { NavLink as RemixNavLink } from "remix";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import { Trigger } from "./radixTabs";
 
-type NavLink = {
+type NavLinkProps = {
   href: string;
   text: string;
-  current: string;
+  isActive: boolean;
 };
 
-export default function NavLink({ href, text, current }: NavLink) {
-  const isActive = (slug: string, target: string) => {
-    return slug === target.slice(1);
-  };
-
+export default function NavLink({ href, text, isActive }: NavLinkProps) {
   return (
-    <Trigger
-      asChild
-      value={href.slice(1)}
-      style={{
-        "--color": isActive(current, href) ? "var(--color-yellow)" : "inherit",
-        "--background": isActive(current, href)
-          ? "var(--color-brown)"
-          : "inherit",
-      }}
-    >
+    <Trigger asChild value={href.slice(1)}>
       <RemixNavLink key={href} to={href}>
         {text}
       </RemixNavLink>
     </Trigger>
   );
 }
+
+const MotionSpan = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-yellow);
+  background-color: var(--color-brown);
+`;

@@ -1,5 +1,6 @@
 import { List } from "./radixTabs";
 import styled from "styled-components";
+
 import NavLink from "./navLink";
 
 const links = [
@@ -16,11 +17,19 @@ type NavProps = {
 };
 
 const Nav = ({ category }: NavProps) => {
+  const isActive = (current: string, target: string) => {
+    return current === target.slice(1);
+  };
+
   return (
     <List aria-label="Navigate drink categories" asChild>
       <RootWrapper>
         {links.map((link) => (
-          <NavLink key={link.href} current={category} {...link} />
+          <NavLink
+            key={link.href}
+            isActive={isActive(category, link.href)}
+            {...link}
+          />
         ))}
       </RootWrapper>
     </List>
@@ -41,5 +50,7 @@ const RootWrapper = styled.nav`
     margin-right: 0;
   }
 `;
+
+
 
 export default Nav;
