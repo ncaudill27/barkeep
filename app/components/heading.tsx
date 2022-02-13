@@ -25,7 +25,7 @@ const Heading = ({ tag, ...props }: HeadingProps) => {
       throw new Error('Prop Error: Missing or invalid "tag" prop');
   }
 
-  return <Tag {...props} />;
+  return <Tag as={tag} {...props} />;
 };
 
 const HeadingBase = styled.h1`

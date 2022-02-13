@@ -87,7 +87,7 @@ async function sanityFetchDrinks({
 // drink index
 export async function getDrinks(): Promise<Drink[]> {
   const query =
-    '*[_type == "dinnerCocktail"] {name, "categories": categories[]->title}';
+    '*[_type == "dinnerCocktail"] {name, ingredients, "categories": categories[]->title}';
 
   return await sanityFetchDrinks({ query });
 }
@@ -95,7 +95,7 @@ export async function getDrinks(): Promise<Drink[]> {
 // $category index
 export async function getDrinksByCategory(category: string): Promise<Drink[]> {
   const query =
-    '*[count((categories[]->title)[lower(@) in $array]) > 0] {name, "categories": categories[]->title}';
+    '*[count((categories[]->title)[lower(@) in $array]) > 0] {name, ingredients, "categories": categories[]->title}';
   const array = getFilteredCategoryArray(category);
   const params = { array };
 

@@ -3,18 +3,25 @@ import type { Drink } from "~/drink";
 
 import BaseLink from "./baseLink";
 import FilterPopover from "~/components/filterPopover";
+import Heading from "./heading";
+import Flex from "./flex";
 
 type DrinkListProps = {
   drinks: Drink[];
 };
 
 export default function DrinkList({ drinks }: DrinkListProps) {
+  console.log(drinks);
+
   return (
     <StyledList>
       <FilterPopover />
       {drinks.map((drink) => (
-        <StyledItem key={drink.name}>
-          <BaseLink to={`/drinks/${drink.name}`}>{drink.name}</BaseLink>
+        <StyledItem key={drink.name} to={`/drinks/${drink.name}`}>
+          <Heading tag="h3">{drink.name}</Heading>
+          <IngredientList wrap>
+            {drink.ingredients.map(({ name }) => name).join(", ")}
+          </IngredientList>
         </StyledItem>
       ))}
     </StyledList>
@@ -24,10 +31,19 @@ export default function DrinkList({ drinks }: DrinkListProps) {
 const StyledList = styled.ul`
   position: relative;
   padding: 0;
-  padding-bottom: 40px;
   list-style: none;
 `;
 
-const StyledItem = styled.li`
-  margin-bottom: 4px;
+const StyledItem = styled(BaseLink)`
+  display: block;
+  margin-bottom: 16px;
+`;
+
+const IngredientList = styled(Flex)`
+  padding: 0;
+  max-width: 300px;
+
+  gap: 0 8px;
+  list-style: none;
+  font-size: ${14 / 16}rem;
 `;
