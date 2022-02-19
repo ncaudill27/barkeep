@@ -13,20 +13,14 @@ type NavLinkProps = {
 export default function NavLink({ href, text, isActive }: NavLinkProps) {
   return (
     <Trigger asChild value={href.slice(1)}>
-      {isActive ? (
-        <RemixNavLink
-          style={{ color: "var(--color-yellow)" }}
-          key={href}
-          to={href}
-        >
-          {text}
-          <MotionSpan layoutId="active" />
-        </RemixNavLink>
-      ) : (
-        <RemixNavLink key={href} to={href}>
-          {text}
-        </RemixNavLink>
-      )}
+      <RemixNavLink
+        style={{ color: isActive ? "var(--color-yellow)" : "inherit" }}
+        key={href}
+        to={href}
+      >
+        {text}
+        {isActive && <MotionSpan layoutId="active" />}
+      </RemixNavLink>
     </Trigger>
   );
 }
@@ -42,7 +36,7 @@ const MotionSpan = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-yellow);
+  color: var(--color);
   background-color: var(--color-brown);
   z-index: -1;
 `;
