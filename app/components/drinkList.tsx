@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import type { Drink } from "~/drink";
 
@@ -11,11 +12,13 @@ type DrinkListProps = {
 };
 
 export default function DrinkList({ drinks }: DrinkListProps) {
-  console.log(drinks);
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => setOpen((prev) => !prev);
+  const close = () => setOpen(false);
 
   return (
     <StyledList>
-      <FilterPopover />
+      <FilterPopover toggleOpen={toggleOpen} isOpen={open} />
       {drinks.map((drink) => (
         <StyledItem key={drink.name} to={`/drinks/${drink.name}`}>
           <Heading tag="h3">{drink.name}</Heading>
