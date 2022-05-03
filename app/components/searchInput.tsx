@@ -1,6 +1,5 @@
 import React, { KeyboardEventHandler, MouseEventHandler } from "react";
 import styled from "styled-components";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ChangeEventHandler } from "react";
 
 type SearchInputProps = {
@@ -20,12 +19,11 @@ export default function SearchInput({
 }: SearchInputProps) {
   return (
     <Wrapper>
-      <VisuallyHidden>Search drink</VisuallyHidden>
       <IconWrapper>
         <Icon />
       </IconWrapper>
       <TextInput
-        type="text"
+        type="search"
         name="search"
         placeholder="Search drink..."
         autoComplete="off"
@@ -49,7 +47,7 @@ export const TextInput = styled.input`
   display: flex;
   align-items: center;
   gap: 8px;
-  width: min(100%, 35ch);
+  width: 100%;
   margin-bottom: 16px;
   padding-left: 42px;
   height: 44px;
