@@ -1,6 +1,6 @@
-import { useLoaderData } from "remix";
+import { useLoaderData } from "@remix-run/react";
 import { getDrinks, filterDrinks } from "~/drink";
-import type { LoaderFunction } from "remix";
+import type { LoaderFunction } from "@remix-run/node";
 
 import DrinkList from "~/components/drinkList";
 import Search from "~/components/search";

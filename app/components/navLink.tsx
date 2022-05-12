@@ -1,4 +1,4 @@
-import { NavLink as RemixNavLink } from "remix";
+import { NavLink as RemixNavLink } from "@remix-run/react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 

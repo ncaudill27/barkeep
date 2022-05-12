@@ -6,8 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
   useParams,
-} from "remix";
-import type { MetaFunction } from "remix";
+} from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
 import { Content, Root } from "./components/radixTabs";
 
 import Layout from "./components/layout";

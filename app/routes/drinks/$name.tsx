@@ -1,5 +1,5 @@
-import { useLoaderData, MetaFunction } from "remix";
-import type { LoaderFunction } from "remix";
+import { useLoaderData } from "@remix-run/react";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { getDrink } from "~/drink";
 import type { Drink } from "~/drink";
 import invariant from "tiny-invariant";

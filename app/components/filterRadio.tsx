@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Form } from "remix";
+import { Form } from "@remix-run/react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 
 import Flex from "./flex";

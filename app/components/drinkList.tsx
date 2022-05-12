@@ -12,13 +12,9 @@ type DrinkListProps = {
 };
 
 export default function DrinkList({ drinks }: DrinkListProps) {
-  const [open, setOpen] = useState(false);
-  const toggleOpen = () => setOpen((prev) => !prev);
-  const close = () => setOpen(false);
-
   return (
     <StyledList>
-      <FilterPopover toggleOpen={toggleOpen} isOpen={open} />
+      <FilterPopover />
       {drinks.map((drink) => (
         <StyledItem key={drink.name} to={`/drinks/${drink.name}`}>
           <Heading tag="h3">{drink.name}</Heading>

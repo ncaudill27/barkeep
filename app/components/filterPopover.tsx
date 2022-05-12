@@ -6,14 +6,9 @@ import { Popover, Trigger, Content, CloseButton } from "./radixPopover";
 import FilterRadio from "./filterRadio";
 import Heading from "./heading";
 
-interface FilterPopover {
-  toggleOpen: () => boolean;
-  isOpen: boolean;
-};
-
-export default function FilterPopover({ toggleOpen, isOpen }: FilterPopover) {
+export default function FilterPopover() {
   return (
-    <Popover open={isOpen} onOpenChange={toggleOpen}>
+    <Popover>
       <Trigger asChild>
         <IconButton aria-label="Filter cocktails" whileTap={{ scale: 0.9 }}>
           <VisuallyHidden>Open filter options</VisuallyHidden>
