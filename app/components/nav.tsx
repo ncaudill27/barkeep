@@ -5,7 +5,7 @@ import NavLink from "./navLink";
 import { motion } from "framer-motion";
 
 const links = [
-  { href: "/", text: "All" },
+  { href: "/drinks", text: "All" },
   { href: "gin", text: "Gin" },
   { href: "agave", text: "Agave" },
   { href: "rum", text: "Rum" },
@@ -19,7 +19,7 @@ type NavProps = {
 
 const Nav = ({ category }: NavProps) => {
   const isActive = (current: string, target: string) => {
-    return current === target.slice(1);
+    return current === target;
   };
 
   return (

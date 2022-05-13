@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import type { Drink } from "~/drink";
+import { unsafe___getCategory } from "~/utils/HACK_getCategory";
 
 import BaseLink from "./baseLink";
 import FilterPopover from "~/components/filterPopover";
@@ -11,11 +12,16 @@ type DrinkListProps = {
 };
 
 export default function DrinkList({ drinks }: DrinkListProps) {
+  console.log(drinks);
+
   return (
     <StyledList>
       <FilterPopover />
       {drinks.map((drink) => (
-        <StyledItem key={drink.name} to={`/drinks/${drink.name}`}>
+        <StyledItem
+          key={drink.name}
+          to={`/drinks/${unsafe___getCategory(drink.categories)}/${drink.name}`}
+        >
           <Heading tag="h3">{drink.name}</Heading>
           <IngredientList wrap>
             {drink.ingredients.map(({ name }) => name).join(", ")}
@@ -29,6 +35,7 @@ export default function DrinkList({ drinks }: DrinkListProps) {
 const StyledList = styled.ul`
   position: relative;
   padding: 0;
+
   list-style: none;
 `;
 
