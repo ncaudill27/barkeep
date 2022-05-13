@@ -1,31 +1,14 @@
-import { useLoaderData } from "remix";
-import { getDrinks, filterDrinks } from "~/drink";
-import type { LoaderFunction } from "remix";
-
-import DrinkList from "~/components/drinkList";
-import Search from "~/components/search";
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  const searchValues = Object.fromEntries(url.searchParams.entries());
-  const drinks = await getDrinks();
-
-  return {
-    drinks,
-    searchValues: { ...searchValues, buildStyle: searchValues["build-style"] },
-  };
-};
+import Heading from "~/components/heading";
 
 export default function Index() {
-  const {
-    drinks,
-    searchValues: { buildStyle, search },
-  } = useLoaderData();
-
   return (
     <>
-      <Search drinks={drinks} />
-      <DrinkList drinks={filterDrinks(drinks, { buildStyle, search })} />
+      <Heading tag="h1">
+        Barkeep
+        <br />
+        Journal
+      </Heading>
+      <p>Every bartender's favorite cheat sheet.</p>
     </>
   );
 }

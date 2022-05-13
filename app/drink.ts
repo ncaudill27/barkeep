@@ -28,8 +28,8 @@ type SanityParamProps = {
 };
 
 export type FilterOptions = {
-  buildStyle?: string | null;
-  search?: string | null;
+  buildStyle?: string;
+  search?: string;
 };
 
 export function filterDrinks(

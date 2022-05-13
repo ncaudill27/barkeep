@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Form } from "remix";
+import { Form } from "@remix-run/react";
 import type { Drink } from "~/drink";
 import SearchInput from "./searchInput";
 import SearchList from "./searchList";

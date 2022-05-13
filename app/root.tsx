@@ -5,15 +5,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useParams,
-} from "remix";
-import type { MetaFunction } from "remix";
-import { Content, Root } from "./components/radixTabs";
+} from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
 
-import Layout from "./components/layout";
-import GlobalStyles from "./styles/globalStyles";
-import Header from "./components/header";
-import Nav from "./components/nav";
+import Layout from "~/components/layout";
+import GlobalStyles from "~/styles/globalStyles";
+import Header from "~/components/header";
 
 export const meta: MetaFunction = () => {
   return {
@@ -23,8 +20,6 @@ export const meta: MetaFunction = () => {
 };
 
 export default function App() {
-  const { category = "" } = useParams();
-
   return (
     <html lang="en">
       <head>
@@ -47,12 +42,7 @@ export default function App() {
       <Layout>
         <GlobalStyles />
         <Header />
-        <Root value={category} activationMode="manual" defaultValue="">
-          <Nav category={category} />
-          <Content value={category}>
-            <Outlet />
-          </Content>
-        </Root>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}

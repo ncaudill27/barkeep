@@ -1,6 +1,6 @@
-import { Link } from "remix";
-import type { LinkProps } from "remix";
-import styled from 'styled-components';
+import { Link } from "@remix-run/react";
+import type { LinkProps } from "@remix-run/react";
+import styled from "styled-components";
 
 export default function BaseLink(props: LinkProps) {
   return <StyledLink {...props} />;
