@@ -5,7 +5,7 @@ import NavLink from "./navLink";
 import { motion } from "framer-motion";
 
 const links = [
-  { href: "/drinks", text: "All" },
+  { href: "", text: "All" },
   { href: "gin", text: "Gin" },
   { href: "agave", text: "Agave" },
   { href: "rum", text: "Rum" },

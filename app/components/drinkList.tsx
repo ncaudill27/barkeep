@@ -12,8 +12,6 @@ type DrinkListProps = {
 };
 
 export default function DrinkList({ drinks }: DrinkListProps) {
-  console.log(drinks);
-
   return (
     <StyledList>
       <FilterPopover />
