@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 
 const links = [
   { href: "/", text: "All" },
-  { href: "/gin", text: "Gin" },
-  { href: "/agave", text: "Agave" },
-  { href: "/rum", text: "Rum" },
-  { href: "/whiskey", text: "Whiskey" },
-  { href: "/other", text: "Other" },
+  { href: "gin", text: "Gin" },
+  { href: "agave", text: "Agave" },
+  { href: "rum", text: "Rum" },
+  { href: "whiskey", text: "Whiskey" },
+  { href: "other", text: "Other" },
 ];
 
 type NavProps = {

@@ -1,14 +1,11 @@
+import { Link } from "@remix-run/react";
 import styled from "styled-components";
-import Heading from "./heading";
 
 const Header = () => {
   return (
     <Wrapper>
-      <Heading tag="h1">
-        Barkeep
-        <br />
-        Journal
-      </Heading>
+      <Link to="/">Home</Link>
+      <Link to="/drinks">Cocktails</Link>
     </Wrapper>
   );
 };
@@ -16,6 +13,8 @@ const Header = () => {
 const Wrapper = styled.header`
   margin-top: 32px;
   margin-bottom: 32px;
+
+  display: flex;
 `;
 
 export default Header;
