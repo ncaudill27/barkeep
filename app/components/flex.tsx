@@ -48,6 +48,17 @@ export default function Flex({
   );
 }
 
+Flex.FlexChild = ({ flex, ...props }: FlexChildProps) => {
+  return (
+    <StyledFlexChild
+      style={{
+        "--flex": flex,
+      }}
+      {...props}
+    />
+  );
+};
+
 interface Flex {
   style: {
     "--justify"?: string;
@@ -70,17 +81,6 @@ const StyledFlex = styled.div<Flex>`
 type FlexChildProps = {
   flex: string | number;
   children: React.ReactChild | React.ReactChild[];
-};
-
-Flex.FlexChild = ({ flex, ...props }: FlexChildProps) => {
-  return (
-    <StyledFlexChild
-      style={{
-        "--flex": flex,
-      }}
-      {...props}
-    />
-  );
 };
 
 interface FlexChild {

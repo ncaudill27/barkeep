@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useLoaderData, Outlet, useParams } from "@remix-run/react";
 import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
@@ -34,16 +35,21 @@ export default function Index() {
 
   return (
     <>
-      <Icon icon="martini" />
       <Root value={category} activationMode="manual" defaultValue="" asChild>
-        <main>
+        <StyledMain>
+          <Icon icon="martini" />
           <Nav category={category} />
           <Content value={category}>
             <Search drinks={drinks} />
             <Outlet />
           </Content>
-        </main>
+        </StyledMain>
       </Root>
     </>
   );
 }
+
+const StyledMain = styled.main`
+  position: relative;
+  width: fit-content;
+`;

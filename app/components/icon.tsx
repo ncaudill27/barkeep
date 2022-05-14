@@ -30,6 +30,7 @@ export default function Icon({ icon }: IconProps) {
 
   return (
     <Wrapper
+      aria-hidden
       data-iconauthor={ICON[icon].author}
       data-iconauthorprofile={ICON[icon].profile}
       data-iconauthortwitter={ICON[icon].twitter}
@@ -54,7 +55,7 @@ type IconWrapperProps = {
 const Wrapper = styled.div<IconWrapperProps>`
   position: fixed;
   top: 4rem;
-  right: -16px;
+  right: max(-16px, 50% - 1000px / 2);
 
   width: var(--width);
   height: calc(var(--width) * var(--aspect-ratio));

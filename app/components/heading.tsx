@@ -40,11 +40,11 @@ const PrimaryHeading = styled(HeadingBase)`
 `;
 
 const SecondaryHeading = styled(HeadingBase)`
-  font-size: ${36 / 16}rem;
+  font-size: ${40 / 16}rem;
 `;
 
 const TertiaryHeading = styled(HeadingBase)`
-  font-size: ${28 / 16}rem;
+  font-size: ${24 / 16}rem;
   font-weight: var(--font-weight-bold);
 `;
 
