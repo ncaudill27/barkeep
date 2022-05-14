@@ -68,11 +68,11 @@ const StyledFlex = styled.div<Flex>`
 `;
 
 type FlexChildProps = {
-  flex: string;
+  flex: string | number;
   children: React.ReactChild | React.ReactChild[];
 };
 
-export const FlexChild = ({ flex, ...props }: FlexChildProps) => {
+Flex.FlexChild = ({ flex, ...props }: FlexChildProps) => {
   return (
     <StyledFlexChild
       style={{
@@ -85,7 +85,7 @@ export const FlexChild = ({ flex, ...props }: FlexChildProps) => {
 
 interface FlexChild {
   style: {
-    "--flex": string;
+    "--flex": string | number;
   };
 }
 

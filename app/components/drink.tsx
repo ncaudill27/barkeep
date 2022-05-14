@@ -2,7 +2,7 @@ import styled from "styled-components";
 import type { Drink } from "~/drink";
 
 import Heading from "./heading";
-import Flex, { FlexChild } from "./flex";
+import Flex from "./flex";
 import Ingredient from "./ingredient";
 import BuildPortableText from "./buildPortableText";
 
@@ -22,16 +22,16 @@ export default function DrinkComponent({
       ))}
       <Flex justify="space-between">
         {glassware && (
-          <FlexChild flex="1">
+          <Flex.FlexChild flex="1">
             <Subheading>Glassware</Subheading>
             {glassware.slice(0, 1).toUpperCase() + glassware.slice(1)}
-          </FlexChild>
+          </Flex.FlexChild>
         )}
         {garnish && (
-          <FlexChild flex="1">
+          <Flex.FlexChild flex="1">
             <Subheading>Garnish</Subheading>
             {garnish}
-          </FlexChild>
+          </Flex.FlexChild>
         )}
       </Flex>
       {build && build.length > 0 && (
