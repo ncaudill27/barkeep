@@ -1,20 +1,21 @@
-import { Link } from "@remix-run/react";
 import styled from "styled-components";
+import BaseLink from "./baseLink";
 
 const Header = () => {
   return (
     <Wrapper>
-      <Link to="/">Home</Link>
-      <Link to="/drinks">Cocktails</Link>
+      <BaseLink to="/">Logo</BaseLink>
+      <BaseLink to="/drinks">Cocktails</BaseLink>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.header`
   margin-top: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 80px;
 
   display: flex;
+  gap: 16px;
 `;
 
 export default Header;

@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
 const RootWrapper = styled.body`
   padding-left: 16px;
   padding-right: 16px;
-  max-width: 600px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 `;

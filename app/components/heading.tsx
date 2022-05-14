@@ -30,13 +30,13 @@ const Heading = ({ tag, ...props }: HeadingProps) => {
 
 const HeadingBase = styled.h1`
   color: var(--color-brown-darkest);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-light);
+  font-family: "Boska";
+  font-weight: var(--font-weight-regular);
   line-height: 1.1;
 `;
 
 const PrimaryHeading = styled(HeadingBase)`
-  font-size: ${48 / 16}rem;
+  font-size: ${64 / 16}rem;
 `;
 
 const SecondaryHeading = styled(HeadingBase)`
@@ -44,8 +44,8 @@ const SecondaryHeading = styled(HeadingBase)`
 `;
 
 const TertiaryHeading = styled(HeadingBase)`
-  font-size: ${20 / 16}rem;
-  font-weight: var(--font-weight-regular);
+  font-size: ${28 / 16}rem;
+  font-weight: var(--font-weight-medium);
 `;
 
 const QuaternaryHeading = styled.h4`

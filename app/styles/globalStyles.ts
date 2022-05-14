@@ -1,6 +1,16 @@
 import { createGlobalStyle } from "styled-components";
+import Boska from "~/styles/fonts/Boska-Variable.woff2";
+import Supreme from "~/styles/fonts/Supreme-Variable.woff2";
 
 export default createGlobalStyle`
+  @font-face {
+    font-family: "Boska";
+    src: url(${Boska}) format("woff2");
+  }
+  @font-face {
+    font-family: "Supreme";
+    src: url(${Supreme}) format("woff2");
+  }
   :root {
     /* ----------
     SPACING VARIABLES
@@ -43,8 +53,8 @@ export default createGlobalStyle`
     --font-weight-regular: 400;
     --font-weight-light: 300;
     --font-weight-extra-light: 200;
-    --font-family-primary: "Spectral", "sans‑serif";
-    --font-family-secondary: "Open Sans", "Segoe UI", "Apple SD Gothic Neo", "Lucida Grande", "Lucida Sans Unicode", "sans‑serif";
+    --font-family-primary: "Boska", "Spectral", "serif";
+    --font-family-secondary: "Supreme", "Open Sans", "Segoe UI", "Apple SD Gothic Neo", "Lucida Grande", "Lucida Sans Unicode", "sans‑serif";
     --font-family-code: "Source Code Pro", "Fira Mono", "monospace";
   }
   /*
@@ -58,13 +68,14 @@ export default createGlobalStyle`
     margin: 0;
   }
   html, body {
-    font-family: system-ui, sans-serif;
     background-color: var(--color-cream);
+    font-family: var(--font-family-secondary);
     color: var(--color-brown-dark);
   }
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-size: ${20 / 16}rem;
   }
   img, picture, video, canvas, svg {
     display: block;
