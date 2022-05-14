@@ -6,6 +6,7 @@ import type { LoaderFunction } from "@remix-run/node";
 import { Content, Root } from "~/components/radixTabs";
 import Nav from "~/components/nav";
 import Search from "~/components/search";
+import Icon from "~/components/icon";
 
 type LoaderData = {
   drinks: Drink[];
@@ -33,6 +34,7 @@ export default function Index() {
 
   return (
     <>
+      <Icon icon="martini" />
       <Root value={category} activationMode="manual" defaultValue="" asChild>
         <main>
           <Nav category={category} />

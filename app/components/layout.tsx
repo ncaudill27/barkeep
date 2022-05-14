@@ -1,20 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import Icon from "./icon";
-
 type LayoutProps = {
   children: React.ReactNode;
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <RootWrapper>
-      <Icon icon="martini" />
-
-      {children}
-    </RootWrapper>
-  );
+  return <RootWrapper>{children}</RootWrapper>;
 };
 
 const RootWrapper = styled.body`
@@ -23,6 +15,7 @@ const RootWrapper = styled.body`
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  background: transparent;
 `;
 
 export default Layout;
