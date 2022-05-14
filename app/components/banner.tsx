@@ -22,5 +22,5 @@ const Wrapper = styled.div`
   width: 100%;
   background-color: var(--color-brown);
   color: var(--color-cream);
-  padding-inline: max(16px, 50% - 1000px / 2);
+  padding-inline: max(16px, 50% - 968px / 2);
 `;

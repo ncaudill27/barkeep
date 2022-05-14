@@ -32,6 +32,7 @@ export default createGlobalStyle`
     COLOR PALETTE
     ---------- */
     --color-cream: hsl(30, 53%, 93%);        // #f7ede4 
+    --color-cream-light: hsl(30, 48%, 97%);
     --color-brown: hsl(6, 38%, 44%);         // #9b4e46
     --color-brown-light: hsl(6, 33%, 54%);   // #b06b63
     --color-brown-dark: hsl(6, 33%, 34%);    // #73403a
@@ -86,6 +87,10 @@ export default createGlobalStyle`
   }
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
+  }
+
+  p {
+    margin-bottom: 8px;
   }
   * {
     &:focus {

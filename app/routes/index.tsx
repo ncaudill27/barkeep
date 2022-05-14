@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import DesktopBlob from "~/components/backgroundDesktopBlob";
-import TabletBlob from "~/components/backgroundTabletBlob";
-import MobileBlob from "~/components/backgroundMobileBlob";
+import DesktopBackground from "~/components/backgroundDesktopBlob";
+import TabletBackground from "~/components/backgroundTabletBlob";
+import MobileBackground from "~/components/backgroundMobileBlob";
 import Heading from "~/components/heading";
 import Banner from "~/components/banner";
 
@@ -27,9 +27,24 @@ export default function Index() {
           <p>with great company!</p>
         </BannerItem>
       </Banner>
+      <SubBanner>
+        <LandingHeading tag="h2">What is this?</LandingHeading>
+        <p>Barkeep is a platform for anyone interested in bartending.</p>
+        <p>
+          Whether you've never picked up a shaker or have been behind the stick
+          for years. Check back soon to as we add more features.
+        </p>
+        <p>Features you can expect:</p>
+        <ul>
+          <li>Easily share cocktail links with friends</li>
+          <li>Save your favorite cocktails and add notes for your personal tweaks</li>
+          <li>Easily batch for your next event with the Batch Calculator&#8482;</li>
+          <li>Training content (e.g. How to shake, stir, and profile drinks)</li>
+        </ul>
+      </SubBanner>
       <DesktopBackground aria-hidden />
+      <TabletBackground aria-hidden />
       <MobileBackground aria-hidden />
-      <SmallMobileBackground aria-hidden />
     </>
   );
 }
@@ -45,7 +60,7 @@ const SubHeading = styled.p`
 `;
 
 const BannerHeading = styled(Heading)`
-  color: inherit;
+  color: var(--color-cream-light);
 `;
 
 const BannerItem = styled.div`
@@ -56,47 +71,11 @@ const BannerItem = styled.div`
   }
 `;
 
-const DesktopBackground = styled(DesktopBlob)`
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+const SubBanner = styled.div`
+  max-width: 60ch;
+  margin-top: 550px;
 
-  z-index: -1;
-
-  @media screen and (min-width: 1300px) {
-    display: revert;
-  }
-`;
-const MobileBackground = styled(TabletBlob)`
-  display: none;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-
-  @media screen and (min-width: 500px) {
-    display: revert;
-  }
-
-  @media screen and (min-width: 1300px) {
-    display: none;
-  }
-`;
-const SmallMobileBackground = styled(MobileBlob)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-
-  @media screen and (min-width: 500px) {
-    display: none;
+  @media screen and (min-width: 600px) {
+    margin-top: 338px;
   }
 `;

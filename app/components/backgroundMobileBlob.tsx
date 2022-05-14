@@ -1,4 +1,6 @@
-export default function SmallMobileBlob(props) {
+import styled from "styled-components";
+
+function MobileBlob(props) {
   return (
     <svg
       viewBox="0 0 540 1860"
@@ -38,3 +40,18 @@ export default function SmallMobileBlob(props) {
     </svg>
   );
 }
+
+const MobileBackground = styled(MobileBlob)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+`;
+
+export default MobileBackground;

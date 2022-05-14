@@ -1,4 +1,5 @@
-export default function BlobBackground(props) {
+import styled from "styled-components";
+function DesktopBlob(props) {
   return (
     <svg
       viewBox="0 0 900 600"
@@ -38,3 +39,20 @@ export default function BlobBackground(props) {
     </svg>
   );
 }
+
+const DesktopBackground = styled(DesktopBlob)`
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: -1;
+
+  @media screen and (min-width: 1300px) {
+    display: revert;
+  }
+`;
+
+export default DesktopBackground;
