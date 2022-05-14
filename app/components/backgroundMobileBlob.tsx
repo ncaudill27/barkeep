@@ -7,67 +7,6 @@ export default function SmallMobileBlob(props) {
       version="1.1"
       {...props}
     >
-      <rect x="0" y="0" width="540" height="1860" fill="#f7ede4"></rect>
-      <defs>
-        <linearGradient id="grad1_0" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop
-            offset="30.000000000000004%"
-            stop-color="#f5c2c8"
-            stop-opacity="1"
-          ></stop>
-          <stop offset="70%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad1_1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop
-            offset="30.000000000000004%"
-            stop-color="#f5c2c8"
-            stop-opacity="1"
-          ></stop>
-          <stop offset="70%" stop-color="#f7d8cf" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad1_2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop
-            offset="30.000000000000004%"
-            stop-color="#f7ede4"
-            stop-opacity="1"
-          ></stop>
-          <stop offset="70%" stop-color="#f7d8cf" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad2_0" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop
-            offset="30.000000000000004%"
-            stop-color="#f5c2c8"
-            stop-opacity="1"
-          ></stop>
-          <stop offset="70%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad2_1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop
-            offset="30.000000000000004%"
-            stop-color="#f7d8cf"
-            stop-opacity="1"
-          ></stop>
-          <stop offset="70%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad2_2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop
-            offset="30.000000000000004%"
-            stop-color="#f7d8cf"
-            stop-opacity="1"
-          ></stop>
-          <stop offset="70%" stop-color="#f7ede4" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
       <g transform="translate(540, 0)">
         <path
           d="M0 540C-108.8 534.1 -217.5 528.3 -270 467.7C-322.5 407 -318.6 291.6 -354.2 204.5C-389.8 117.4 -464.9 58.7 -540 0L0 0Z"

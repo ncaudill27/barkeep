@@ -7,43 +7,6 @@ export default function MobileBlobBackground(props) {
       version="1.1"
       {...props}
     >
-      <rect x="0" y="0" width="540" height="960" fill="#f7ede4"></rect>
-      <defs>
-        <linearGradient id="grad1_0" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="30%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-          <stop offset="70%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad1_1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="30%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-          <stop offset="70%" stop-color="#f7d8cf" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad1_2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="30%" stop-color="#f7ede4" stop-opacity="1"></stop>
-          <stop offset="70%" stop-color="#f7d8cf" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad2_0" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="30%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-          <stop offset="70%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad2_1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="30%" stop-color="#f7d8cf" stop-opacity="1"></stop>
-          <stop offset="70%" stop-color="#f5c2c8" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
-      <defs>
-        <linearGradient id="grad2_2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="30%" stop-color="#f7d8cf" stop-opacity="1"></stop>
-          <stop offset="70%" stop-color="#f7ede4" stop-opacity="1"></stop>
-        </linearGradient>
-      </defs>
       <g transform="translate(540, 0)">
         <path
           d="M0 432C-30.1 342.7 -60.2 253.5 -132 228.6C-203.8 203.8 -317.2 243.4 -374.1 216C-431.1 188.6 -431.5 94.3 -432 0L0 0Z"
