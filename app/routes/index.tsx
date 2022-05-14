@@ -1,9 +1,10 @@
 import styled from "styled-components";
+
 import DesktopBlob from "~/components/backgroundDesktopBlob";
 import TabletBlob from "~/components/backgroundTabletBlob";
 import MobileBlob from "~/components/backgroundMobileBlob";
 import Heading from "~/components/heading";
-import Flex from "~/components/flex";
+import Banner from "~/components/banner";
 
 export default function Index() {
   return (
@@ -13,20 +14,18 @@ export default function Index() {
       </LandingHeading>
       <SubHeading>Learn. Build. Enjoy.</SubHeading>
       <Banner>
-        <Flex justify="space-between" gap={3} wrap>
-          <Flex.FlexChild flex="1">
-            <BannerHeading tag="h2">Learn</BannerHeading>
-            <p>how to bartend!</p>
-          </Flex.FlexChild>
-          <Flex.FlexChild flex="1">
-            <BannerHeading tag="h2">Build</BannerHeading>
-            <p>like a pro!</p>
-          </Flex.FlexChild>
-          <Flex.FlexChild flex="1">
-            <BannerHeading tag="h2">Enjoy</BannerHeading>
-            <p>with great company!</p>
-          </Flex.FlexChild>
-        </Flex>
+        <BannerItem>
+          <BannerHeading tag="h2">Learn</BannerHeading>
+          <p>how to bartend!</p>
+        </BannerItem>
+        <BannerItem>
+          <BannerHeading tag="h2">Build</BannerHeading>
+          <p>like a pro!</p>
+        </BannerItem>
+        <BannerItem>
+          <BannerHeading tag="h2">Enjoy</BannerHeading>
+          <p>with great company!</p>
+        </BannerItem>
       </Banner>
       <DesktopBackground aria-hidden />
       <MobileBackground aria-hidden />
@@ -45,19 +44,16 @@ const SubHeading = styled.p`
   margin-bottom: 100px;
 `;
 
-const Banner = styled.div`
-  position: absolute;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-brown);
-  color: var(--color-cream);
-  padding-inline: max(16px, 50% - 1000px / 2);
-`;
-
 const BannerHeading = styled(Heading)`
   color: inherit;
+`;
+
+const BannerItem = styled.div`
+  flex-basis: 100%;
+
+  @media screen and (min-width: 600px) {
+    flex-basis: calc(33% - var(--spacing-3));
+  }
 `;
 
 const DesktopBackground = styled(DesktopBlob)`

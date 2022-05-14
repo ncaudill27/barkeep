@@ -15,7 +15,7 @@ export default function DrinkComponent({
 }: Drink) {
   return (
     <Wrapper>
-      <Heading tag="h2">{name}</Heading>
+      <Heading tag="h1">{name}</Heading>
       <Subheading>Ingredients</Subheading>
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />

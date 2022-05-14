@@ -48,7 +48,7 @@ export default function Flex({
   );
 }
 
-Flex.FlexChild = ({ flex, ...props }: FlexChildProps) => {
+Flex.FlexChild = ({ flex = 1, ...props }: FlexChildProps) => {
   return (
     <StyledFlexChild
       style={{
@@ -79,7 +79,7 @@ const StyledFlex = styled.div<Flex>`
 `;
 
 type FlexChildProps = {
-  flex: string | number;
+  flex?: string | number;
   children: React.ReactChild | React.ReactChild[];
 };
 
