@@ -39,6 +39,7 @@ const StyledList = styled.ul`
 
 const StyledItem = styled(BaseLink)`
   display: block;
+  margin-right: 70px;
   margin-bottom: 16px;
 `;
 
