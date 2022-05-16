@@ -46,6 +46,7 @@ export default function DrinkComponent({
 
 const Wrapper = styled.div`
   max-width: 400px;
+  margin-top: 80px;
   padding-bottom: 40px;
 `;
 

@@ -31,19 +31,20 @@ export default createGlobalStyle`
     /* ----------
     COLOR PALETTE
     ---------- */
-    --color-cream: hsl(30, 53%, 93%);        // #f7ede4 
-    --color-cream-light: hsl(30, 48%, 97%);
-    --color-brown: hsl(6, 38%, 44%);         // #9b4e46
-    --color-brown-light: hsl(6, 33%, 54%);   // #b06b63
-    --color-brown-dark: hsl(6, 33%, 34%);    // #73403a
+    --color-cream: hsl(30, 53%, 93%); //#f7ede4
+    --color-cream-light: hsl(30, 50%, 96%); //
+    --color-brown: hsl(6, 38%, 44%); // #9b4e46
+    --color-brown-light: hsl(6, 33%, 54%); // #b06b63
+    --color-brown-light-transparent: hsla(6,  33%, 54%, 0.3); //
+    --color-brown-dark: hsl(6, 33%, 34%);  // #73403a
     --color-brown-darkest: hsl(6, 38%, 24%); // #542b26
-    --color-green: hsl(64, 35%, 39%);        // #828641
-    --color-green-dark: hsl(64, 30%, 29%);   // #5d6034
-    --color-green-darkest: hsl(64, 35%, 19%);// #3f411f
-    --color-pink: hsl(352, 72%, 86%);        // #f5c2c8
-    --color-yellow: hsl(46, 100%, 50%);      // #ffc400
-    --color-orange: hsl(13, 95%, 60%);       // #fa6238
-
+    --color-green-lightest: hsl(64, 44%, 59%); // 
+    --color-green: hsl(64, 35%, 39%); // #828641
+    --color-green-dark: hsl(64, 30%, 29%); // #5d6034
+    --color-green-darkest: hsl(64, 35%, 19%); // #3f411f
+    --color-pink: hsl(352, 72%, 86%); //#f5c2c8
+    --color-yellow: hsl(46, 100%, 50%); #ffc400
+    --color-orange: hsl(13, 95%, 60%); // #fa6238
     /* ----------
     BASE TYPOGRAPHY RULES
     ---------- */

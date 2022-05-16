@@ -31,12 +31,12 @@ const Heading = ({ tag, ...props }: HeadingProps) => {
 const HeadingBase = styled.h1`
   color: var(--color-brown-darkest);
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semi-bold);
   line-height: 1.1;
 `;
 
 const PrimaryHeading = styled(HeadingBase)`
-  font-size: ${48 / 16}rem;
+  font-size: ${52 / 16}rem;
 `;
 
 const SecondaryHeading = styled(HeadingBase)`

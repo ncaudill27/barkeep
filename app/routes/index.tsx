@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-import DesktopBackground from "~/components/backgroundDesktopBlob";
-import TabletBackground from "~/components/backgroundTabletBlob";
-import MobileBackground from "~/components/backgroundMobileBlob";
 import Heading from "~/components/heading";
 import Banner from "~/components/banner";
+import Background from "~/components/background";
 
 export default function Index() {
   return (
@@ -37,14 +35,18 @@ export default function Index() {
         <p>Features you can expect:</p>
         <ul>
           <li>Easily share cocktail links with friends</li>
-          <li>Save your favorite cocktails and add notes for your personal tweaks</li>
-          <li>Easily batch for your next event with the Batch Calculator&#8482;</li>
-          <li>Training content (e.g. How to shake, stir, and profile drinks)</li>
+          <li>
+            Save your favorite cocktails and add notes for your personal tweaks
+          </li>
+          <li>
+            Easily batch for your next event with the Batch Calculator&#8482;
+          </li>
+          <li>
+            Training content (e.g. How to shake, stir, and profile drinks)
+          </li>
         </ul>
       </SubBanner>
-      <DesktopBackground aria-hidden />
-      <TabletBackground aria-hidden />
-      <MobileBackground aria-hidden />
+      <Background color="pink" />
     </>
   );
 }
@@ -76,6 +78,6 @@ const SubBanner = styled.div`
   margin-top: 550px;
 
   @media screen and (min-width: 600px) {
-    margin-top: 338px;
+    margin-top: 346px;
   }
 `;
