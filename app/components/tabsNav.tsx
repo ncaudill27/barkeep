@@ -1,7 +1,7 @@
 import { List } from "./radixTabs";
 import styled from "styled-components";
 
-import NavLink from "./navLink";
+import NavLink from "./tabsNavLink";
 import { motion } from "framer-motion";
 
 const links = [
