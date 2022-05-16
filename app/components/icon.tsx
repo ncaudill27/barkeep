@@ -1,62 +1,42 @@
-import styled from "styled-components";
 import MartiniIcon from "./iconMartini";
+import FilterIcon from "./iconFilter";
+import { CSSProperties } from "react";
 
 type IconProps = {
-  icon: "martini";
+  icon: "martini" | "filter";
+  iconStyles?: CSSProperties;
 };
 
 const ICON = {
   martini: {
+    tag: MartiniIcon,
     author: "Juraj Sedlák",
     profile: "https://thenounproject.com/yumminky/",
     twitter: "https://twitter.com/yumminky",
     iconLink: "https://thenounproject.com/icon/martini-glass-876587/",
-    aspectRatio: 1.9178,
-    width: "200px",
+  },
+  filter: {
+    tag: FilterIcon,
+    author: "Danny Amacher",
+    profile: "https://thenounproject.com/dannyamacher/",
+    twitter: "https://twitter.com/dannyamacher",
+    iconLink: "https://thenounproject.com/icon/filter-3629722/",
   },
 };
 
-export default function Icon({ icon }: IconProps) {
-  let Tag;
-
-  switch (icon) {
-    case "martini":
-      Tag = MartiniIcon;
-      break;
-
-    default:
-      throw new Error("Icon Error: Invalid icon prop supplied");
-  }
+export default function Icon({ icon, iconStyles, ...props }: IconProps) {
+  let Tag = ICON[icon].tag;
 
   return (
-    <Wrapper
+    <div
       aria-hidden
       data-iconauthor={ICON[icon].author}
       data-iconauthorprofile={ICON[icon].profile}
       data-iconauthortwitter={ICON[icon].twitter}
       data-iconlocation={ICON[icon].iconLink}
-      style={{
-        "--aspect-ratio": ICON[icon].aspectRatio,
-        "--width": ICON[icon].width,
-      }}
+      {...props}
     >
-      <Tag />
-    </Wrapper>
+      <Tag style={iconStyles} />
+    </div>
   );
 }
-
-type IconWrapperProps = {
-  style: {
-    "--aspect-ratio": number;
-    "--width": string;
-  };
-};
-
-const Wrapper = styled.div<IconWrapperProps>`
-  position: fixed;
-  top: 4rem;
-  right: max(-16px, 50% - 1000px / 2);
-
-  width: var(--width);
-  height: calc(var(--width) * var(--aspect-ratio));
-`;
