@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function MobileBlob(props) {
+function MobileBlob(props: any) {
   return (
     <svg
       viewBox="0 0 540 1860"

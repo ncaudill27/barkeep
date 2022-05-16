@@ -1,5 +1,5 @@
 import styled from "styled-components";
-function DesktopBlob(props) {
+function DesktopBlob(props: any) {
   return (
     <svg
       viewBox="0 0 900 600"
@@ -50,7 +50,7 @@ const DesktopBackground = styled(DesktopBlob)`
 
   z-index: -1;
 
-  @media screen and (min-width: 1300px) {
+  @media screen and (min-width: 1600px) {
     display: revert;
   }
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function TabletBlob(props) {
+function TabletBlob(props: any) {
   return (
     <svg
       viewBox="0 0 540 960"
@@ -41,7 +41,7 @@ function TabletBlob(props) {
   );
 }
 
-const TabletBackground = styled(TabletBlob)`
+const PinkTablet = styled(TabletBlob)`
   display: none;
 
   position: absolute;
@@ -55,9 +55,9 @@ const TabletBackground = styled(TabletBlob)`
     display: revert;
   }
 
-  @media screen and (min-width: 1300px) {
+  @media screen and (min-width: 1600px) {
     display: none;
   }
 `;
 
-export default TabletBackground;
+export default PinkTablet;
