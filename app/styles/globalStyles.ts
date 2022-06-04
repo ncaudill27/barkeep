@@ -43,7 +43,7 @@ export default createGlobalStyle`
     --color-green-dark: hsl(64, 30%, 29%); // #5d6034
     --color-green-darkest: hsl(64, 35%, 19%); // #3f411f
     --color-pink: hsl(352, 72%, 86%); //#f5c2c8
-    --color-yellow: hsl(46, 100%, 50%); #ffc400
+    --color-yellow: hsl(46, 100%, 50%); // #ffc400
     --color-orange: hsl(13, 95%, 60%); // #fa6238
     /* ----------
     BASE TYPOGRAPHY RULES
@@ -93,13 +93,7 @@ export default createGlobalStyle`
   p {
     margin-bottom: 8px;
   }
-  * {
-    &:focus {
-      outline: none;
-      border-radius: 2px;
-      box-shadow: 0 0 0 2px var(--color-orange);
-    }
-  }
+  
   #root {
     isolation: isolate;
   }

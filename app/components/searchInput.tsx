@@ -58,7 +58,7 @@ export const TextInput = styled.input`
 
   &:focus {
     background-color: var(--color-cream-light);
-    box-shadow: 0 0 0 2px var(--color-orange);
+    outline: 2px solid var(--color-orange);
   }
 
   &::placeholder {

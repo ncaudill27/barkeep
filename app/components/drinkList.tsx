@@ -3,7 +3,6 @@ import type { Drink } from "~/drink";
 import { unsafe___getCategory } from "~/utils/HACK_getCategory";
 
 import BaseLink from "./baseLink";
-import FilterPopover from "~/components/filterPopover";
 import Heading from "./heading";
 import Flex from "./flex";
 
@@ -14,7 +13,6 @@ type DrinkListProps = {
 export default function DrinkList({ drinks }: DrinkListProps) {
   return (
     <StyledList>
-      <FilterPopover />
       {drinks.map((drink) => (
         <StyledItem
           key={drink.name}

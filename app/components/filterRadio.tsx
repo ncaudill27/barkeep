@@ -46,7 +46,7 @@ const StyledRadio = styled(RadioGroupPrimitive.Item)`
     background-color: var(--color-cream);
   }
   &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
+    outline: 2px solid var(--color-orange);
   }
 `;
 
@@ -103,6 +103,6 @@ const StyledButton = styled.button`
   color: var(--color-brown);
 
   &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
+    outline: 2px solid var(--color-orange);
   }
 `;

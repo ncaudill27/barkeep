@@ -15,7 +15,7 @@ export const Content = styled(PopoverPrimitive.Content)`
   border-top-left-radius: 5px;
 
   &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
+    outline: 2px solid var(--color-orange);
   }
 `;
 
@@ -36,6 +36,6 @@ export const CloseButton = styled(PopoverPrimitive.Close)`
     background-color: var(--color-brown);
   }
   &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
+    outline: 2px solid var(--color-orange);
   }
 `;

@@ -13,7 +13,7 @@ export default function FilterPopover() {
       <Trigger asChild>
         <IconButton aria-label="Filter cocktails" whileTap={{ scale: 0.9 }}>
           <VisuallyHidden>Open filter options</VisuallyHidden>
-          <Icon icon="filter" iconStyles={{marginTop: 4}} />
+          <Icon icon="filter" iconStyles={{ marginTop: 4 }} />
         </IconButton>
       </Trigger>
       <Content asChild>
@@ -61,6 +61,10 @@ const IconButton = styled(motion.button)`
   border: 2px solid var(--color-yellow);
 
   &:focus {
-    box-shadow: 0 0 0 2px var(--color-orange);
+    outline: 2px solid var(--color-orange);
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 `;

@@ -8,6 +8,7 @@ import { Content, Root } from "~/components/radixTabs";
 import Nav from "~/components/tabsNav";
 import Search from "~/components/search";
 import Background from "~/components/background";
+import FilterPopover from "~/components/filterPopover";
 
 type LoaderData = {
   drinks: Drink[];
@@ -40,11 +41,13 @@ export default function Index() {
           <Nav category={category} />
           <Content value={category}>
             <Search drinks={drinks} />
+            <FilterPopover />
+
             <Outlet />
           </Content>
         </StyledMain>
       </Root>
-      <Background color="green" />
+      <Background color="pink" />
     </>
   );
 }
