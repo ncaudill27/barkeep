@@ -10,12 +10,13 @@ const Layout = ({ children }: LayoutProps) => {
 };
 
 const RootWrapper = styled.body`
+  max-width: 1000px;
   padding-left: 16px;
   padding-right: 16px;
-  max-width: 1000px;
+  padding-bottom: 32px;
   margin-left: auto;
   margin-right: auto;
-  background: transparent;
+  min-height: 100vh;
 `;
 
 export default Layout;

@@ -46,7 +46,7 @@ export default function Index() {
           </li>
         </ul>
       </SubBanner>
-      <Background color="pink" />
+      {/* <Background color="pink" /> */}
     </>
   );
 }

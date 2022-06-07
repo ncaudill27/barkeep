@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { getDrinksByCategory, filterDrinks } from "~/drink";
 import type { Drink } from "~/drink";
@@ -35,10 +35,5 @@ export default function Drink() {
     searchValues: { buildStyle },
   } = useLoaderData();
 
-  return (
-    <>
-      <Outlet />
-      <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />
-    </>
-  );
+  return <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />;
 }

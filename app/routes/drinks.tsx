@@ -47,12 +47,11 @@ export default function Index() {
           </Content>
         </StyledMain>
       </Root>
-      <Background color="pink" />
+      {/* <Background color="pink" /> */}
     </>
   );
 }
 
 const StyledMain = styled.main`
   position: relative;
-  width: fit-content;
 `;

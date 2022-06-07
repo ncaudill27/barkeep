@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-function TabletBlob(props: any) {
+function PinkTablet(props: any) {
+  return (
+    <>
+      <StyledTopBlob />
+      <StyledBottomBlob />
+    </>
+  );
+}
+
+function TopTabletBlob(props: any) {
   return (
     <svg
       viewBox="0 0 540 960"
@@ -23,6 +32,19 @@ function TabletBlob(props: any) {
           fill="#f5c2c8"
         ></path>
       </g>
+    </svg>
+  );
+}
+
+function BottomTabletBlob(props: any) {
+  return (
+    <svg
+      viewBox="0 0 540 960"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      {...props}
+    >
       <g transform="translate(0, 960)">
         <path
           d="M0 -432C87.8 -427.8 175.7 -423.6 216 -374.1C256.3 -324.6 249.1 -229.9 277.1 -160C305.2 -90.1 368.6 -45.1 432 0L0 0Z"
@@ -41,14 +63,29 @@ function TabletBlob(props: any) {
   );
 }
 
-const PinkTablet = styled(TabletBlob)`
+const StyledTopBlob = styled(TopTabletBlob)`
   display: none;
 
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  z-index: -1;
+
+  @media screen and (min-width: 500px) {
+    display: revert;
+  }
+
+  @media screen and (min-width: 1600px) {
+    display: none;
+  }
+`;
+const StyledBottomBlob = styled(BottomTabletBlob)`
+  display: none;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: -1;
 
   @media screen and (min-width: 500px) {

@@ -1,6 +1,14 @@
 import { createGlobalStyle } from "styled-components";
+
 import Boska from "~/styles/fonts/Boska-Variable.woff2";
 import Supreme from "~/styles/fonts/Supreme-Variable.woff2";
+
+import TopMobileBlob from "~/assets/top-blob-mobile.svg";
+import BottomMobileBlob from "~/assets/bottom-blob-mobile.svg";
+import TopTabletBlob from "~/assets/top-blob-tablet.svg";
+import BottomTabletBlob from "~/assets/bottom-blob-tablet.svg";
+import TopDesktopBlob from "~/assets/top-blob-desktop.svg";
+import BottomDesktopBlob from "~/assets/bottom-blob-desktop.svg";
 
 export default createGlobalStyle`
   @font-face {
@@ -69,15 +77,27 @@ export default createGlobalStyle`
   * {
     margin: 0;
   }
-  html, body {
+  html {
     background-color: var(--color-cream);
-    font-family: var(--font-family-secondary);
-    color: var(--color-brown-dark);
+    background-image: url(${TopMobileBlob}), url(${BottomMobileBlob});
+    background-position: top right, bottom left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    @media screen and (min-width: 500px) {
+      background-image: url(${TopTabletBlob}), url(${BottomTabletBlob});
+  }
+  @media screen and (min-width: 1100px) {
+    background-image: url(${TopDesktopBlob}), url(${BottomDesktopBlob});
+    background-size: 100%;
+  }
   }
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-size: ${20 / 16}rem;
+    font-family: var(--font-family-secondary);
+    color: var(--color-brown-dark);
   }
   img, picture, video, canvas, svg {
     display: block;

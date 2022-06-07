@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-function MobileBlob(props: any) {
+function MobileBackground(props: any) {
+  return (
+    <>
+      <StyledTopBlob />
+      <StyledBottomBlob />
+    </>
+  );
+}
+
+function TopMobileBlob(props: any) {
   return (
     <svg
       viewBox="0 0 540 1860"
@@ -23,6 +32,19 @@ function MobileBlob(props: any) {
           fill="#f5c2c8"
         ></path>
       </g>
+    </svg>
+  );
+}
+
+function BottomMobileBlob(props: any) {
+  return (
+    <svg
+      viewBox="0 0 540 1860"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      {...props}
+    >
       <g transform="translate(0, 1860)">
         <path
           d="M0 -540C112.1 -536.1 224.2 -532.2 270 -467.7C315.8 -403.1 295.2 -278 329.1 -190C363 -102 451.5 -51 540 0L0 0Z"
@@ -41,14 +63,21 @@ function MobileBlob(props: any) {
   );
 }
 
-const MobileBackground = styled(MobileBlob)`
+const StyledTopBlob = styled(TopMobileBlob)`
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
   z-index: -1;
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+`;
 
+const StyledBottomBlob = styled(BottomMobileBlob)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
   @media screen and (min-width: 500px) {
     display: none;
   }

@@ -11,7 +11,7 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
-  margin-top: 32px;
+  padding-top: 32px;
   margin-bottom: 80px;
 
   display: flex;
