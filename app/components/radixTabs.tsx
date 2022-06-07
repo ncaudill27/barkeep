@@ -6,7 +6,10 @@ export const Root = styled(TabPrimitives.Root)`
   z-index: 1;
 `;
 export const List = TabPrimitives.List;
-export const Content = TabPrimitives.Content;
+export const Content = styled(TabPrimitives.Content)`
+  position: relative;
+  max-width: 546px;
+`;
 
 export const Trigger = styled(TabPrimitives.Trigger)`
   position: relative;
