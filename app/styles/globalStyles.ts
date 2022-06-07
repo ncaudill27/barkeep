@@ -81,16 +81,15 @@ export default createGlobalStyle`
     background-color: var(--color-cream);
     background-image: url(${TopMobileBlob}), url(${BottomMobileBlob});
     background-position: top right, bottom left;
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
     
     @media screen and (min-width: 500px) {
       background-image: url(${TopTabletBlob}), url(${BottomTabletBlob});
-  }
-  @media screen and (min-width: 1100px) {
-    background-image: url(${TopDesktopBlob}), url(${BottomDesktopBlob});
-    background-size: 100%;
-  }
+    }
+    @media screen and (min-width: 1100px) {
+      background-image: url(${TopDesktopBlob}), url(${BottomDesktopBlob});
+    }
   }
   body {
     line-height: 1.5;

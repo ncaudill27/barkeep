@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useLoaderData, Outlet, useParams } from "@remix-run/react";
 import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
@@ -7,7 +6,6 @@ import type { LoaderFunction } from "@remix-run/node";
 import { Content, Root } from "~/components/radixTabs";
 import Nav from "~/components/tabsNav";
 import Search from "~/components/search";
-import Background from "~/components/background";
 import FilterPopover from "~/components/filterPopover";
 
 type LoaderData = {
@@ -37,7 +35,7 @@ export default function Index() {
   return (
     <>
       <Root value={category} activationMode="manual" defaultValue="" asChild>
-        <StyledMain>
+        <main>
           <Nav category={category} />
           <Content value={category}>
             <Search drinks={drinks} />
@@ -45,13 +43,8 @@ export default function Index() {
 
             <Outlet />
           </Content>
-        </StyledMain>
+        </main>
       </Root>
-      {/* <Background color="pink" /> */}
     </>
   );
 }
-
-const StyledMain = styled.main`
-  position: relative;
-`;
