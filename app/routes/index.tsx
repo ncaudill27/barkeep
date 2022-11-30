@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import Heading from "~/components/heading";
 import Banner from "~/components/banner";
-import Background from "~/components/background";
 
 export default function Index() {
   return (

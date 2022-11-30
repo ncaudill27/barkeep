@@ -42,7 +42,7 @@ const StyledRadio = styled(RadioGroupPrimitive.Item)`
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  &:hover: {
+  &:hover {
     background-color: var(--color-cream);
   }
   &:focus {

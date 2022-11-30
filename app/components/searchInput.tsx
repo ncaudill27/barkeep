@@ -53,6 +53,7 @@ export const TextInput = styled.input`
   height: 44px;
 
   border: 1px solid var(--color-brown);
+  border-radius: 0px;
   background-color: var(--color-cream);
   color: var(--color-brown);
 
@@ -64,6 +65,14 @@ export const TextInput = styled.input`
   &::placeholder {
     font-weight: 400;
     color: var(--color-brown-light-transparent);
+  }
+
+  /* remove WebKit icons */
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
   }
 `;
 
