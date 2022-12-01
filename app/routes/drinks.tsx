@@ -30,7 +30,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function Index() {
   const { category = "" } = useParams();
 
-  const { drinks } = useLoaderData<LoaderData>();
+  const { drinks } = useLoaderData<typeof loader>();
 
   return (
     <>

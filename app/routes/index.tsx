@@ -75,6 +75,7 @@ const BannerItem = styled.div`
 const SubBanner = styled.div`
   max-width: 60ch;
   margin-top: 550px;
+  padding-bottom: 60px;
 
   @media screen and (min-width: 600px) {
     margin-top: 346px;
