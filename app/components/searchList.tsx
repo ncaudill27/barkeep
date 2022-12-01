@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { filterDrinks } from "~/drink";
+import { filterDrinks, getDrinkUrl } from "~/drink";
 import type { Drink } from "~/drink";
 import BaseLink from "./baseLink";
 
@@ -15,7 +15,7 @@ export default function SearchList({
   isOpen,
 }: SearchListProps) {
   const isVisible = search !== "" && drinks.length !== 0 && isOpen;
-// TODO implement ReachUI combobox
+  // TODO implement ReachUI combobox
   return (
     <Wrapper
       style={{
@@ -25,7 +25,7 @@ export default function SearchList({
       {isVisible && (
         <StyledList>
           {filterDrinks(drinks, { search }).map((d) => (
-            <StyledLink key={d.name} to={`/drinks/${d.name}`}>
+            <StyledLink key={d.name} to={getDrinkUrl(d)}>
               {d.name}
             </StyledLink>
           ))}

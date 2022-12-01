@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { getDrinkUrl } from "~/drink";
 import type { Drink } from "~/drink";
-import { unsafe___getCategory } from "~/utils/HACK_getCategory";
 
 import BaseLink from "./baseLink";
 import Heading from "./heading";
@@ -14,10 +14,7 @@ export default function DrinkList({ drinks }: DrinkListProps) {
   return (
     <StyledList>
       {drinks.map((drink) => (
-        <StyledItem
-          key={drink.name}
-          to={`/drinks/${unsafe___getCategory(drink.categories)}/${drink.name}`}
-        >
+        <StyledItem key={drink.name} to={getDrinkUrl(drink)}>
           <Heading tag="h3">{drink.name}</Heading>
           <IngredientList wrap>
             {drink.ingredients.map(({ name }) => name).join(", ")}

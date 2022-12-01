@@ -1,20 +1,11 @@
 import { useLoaderData, Outlet, useParams } from "@remix-run/react";
 import { getDrinks } from "~/drink";
-import type { Drink } from "~/drink";
 import type { LoaderFunction } from "@remix-run/node";
 
 import { Content, Root } from "~/components/radixTabs";
 import Nav from "~/components/tabsNav";
 import Search from "~/components/search";
 import FilterPopover from "~/components/filterPopover";
-
-type LoaderData = {
-  drinks: Drink[];
-  searchValues: {
-    buildStyle?: string;
-    search?: string;
-  };
-};
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);

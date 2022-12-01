@@ -1,6 +1,5 @@
 import client from "./sanity.server";
 import type { PortableTextBlockComponent } from "@portabletext/react";
-import invariant from "tiny-invariant";
 
 export type Drink = {
   name: string;
@@ -103,10 +102,18 @@ export async function getDrinksByCategory(category: string): Promise<Drink[]> {
 }
 
 // $drink get
-export async function getDrink(name: string): Promise<Drink> {
+export async function getDrink(name: string) {
   const query = `*[_type == "dinnerCocktail" && name == $name] {name, garnish, glassware, ingredients, 'build': body }`;
   const params = { name };
 
   const [drink] = await sanityFetchDrinks({ query, params });
   return drink;
+}
+
+export function getDrinkUrl(drink: Drink) {
+  const category = drink.categories
+    ?.filter((c) => c !== "Shaken" && c !== "Stirred")[0]
+    .toLowerCase();
+
+  return `/drinks/${category}/${drink.name}`;
 }
