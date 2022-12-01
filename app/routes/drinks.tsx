@@ -7,21 +7,15 @@ import Nav from "~/components/tabsNav";
 import Search from "~/components/search";
 import FilterPopover from "~/components/filterPopover";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url);
-  const searchValues = Object.fromEntries(url.searchParams.entries());
+export const loader: LoaderFunction = async () => {
   const drinks = await getDrinks();
 
-  return {
-    drinks,
-    searchValues: { ...searchValues, buildStyle: searchValues["build-style"] },
-  };
+  return drinks;
 };
 
 export default function Index() {
   const { category = "" } = useParams();
-
-  const { drinks } = useLoaderData<typeof loader>();
+  const drinks = useLoaderData<typeof loader>();
 
   return (
     <>
@@ -29,6 +23,7 @@ export default function Index() {
         <main>
           <Nav category={category} />
           <Content value={category}>
+            {/* needs full list of drinks for search */}
             <Search drinks={drinks} />
             <FilterPopover />
 

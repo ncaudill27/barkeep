@@ -84,14 +84,23 @@ async function sanityFetchDrinks({
 }
 
 // drink index
-export async function getDrinks(
-  filterOptions: FilterOptions
-): Promise<Drink[]> {
+export async function getDrinks(request?: Request): Promise<Drink[]> {
   const query =
     '*[_type == "dinnerCocktail"] {name, ingredients, "categories": categories[]->title}';
-  const drinks = await sanityFetchDrinks({ query });
+  let drinks = await sanityFetchDrinks({ query });
+  // filter drinks if needed
+  if (request) {
+    const url = new URL(request.url);
+    const searchValues = Object.fromEntries(url.searchParams.entries());
+    const filterOptions = {
+      ...searchValues,
+      buildStyle: searchValues["build-style"],
+    };
 
-  return filterDrinks(drinks, filterOptions);
+    drinks = filterDrinks(drinks, filterOptions);
+  }
+
+  return drinks;
 }
 
 // $category index

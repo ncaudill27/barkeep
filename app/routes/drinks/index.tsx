@@ -11,14 +11,8 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export const loader: LoaderFunction = async ({ request, params }) => {
-  const url = new URL(request.url);
-  const searchValues = Object.fromEntries(url.searchParams.entries());
-  const filterValues = {
-    ...searchValues,
-    buildStyle: searchValues["build-style"],
-  };
-  const drinks = await getDrinks(filterValues);
+export const loader: LoaderFunction = async ({ request }) => {
+  const drinks = await getDrinks(request);
 
   return drinks;
 };
