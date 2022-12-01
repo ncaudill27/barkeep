@@ -13,8 +13,7 @@ export default function FilterRadio() {
     <Form method="get" action={location.pathname}>
       <RadioGroup
         name="build-style"
-        defaultValue="all"
-        value={buildStyle ?? "all"}
+        defaultValue={buildStyle ?? "all"}
         aria-label="View density"
       >
         <Flex align="center" gap={0}>
