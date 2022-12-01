@@ -1,4 +1,4 @@
-import { NavLink as RemixNavLink } from "@remix-run/react";
+import { NavLink as RemixNavLink, useLocation } from "@remix-run/react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -11,12 +11,14 @@ type NavLinkProps = {
 };
 
 export default function NavLink({ href, text, isActive }: NavLinkProps) {
+  const location = useLocation();
+
   return (
     <Trigger asChild value={href.slice(1)}>
       <StyledLink
         style={{ color: isActive ? "var(--color-cream)" : "inherit" }}
         key={href}
-        to={href}
+        to={{ pathname: href, search: location.search }}
       >
         {text}
         {isActive && <MotionSpan layoutId="active" />}

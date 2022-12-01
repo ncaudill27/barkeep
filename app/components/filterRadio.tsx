@@ -1,15 +1,20 @@
 import styled from "styled-components";
-import { Form } from "@remix-run/react";
+import { Form, useLocation, useSearchParams } from "@remix-run/react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 
 import Flex from "./flex";
 
 export default function FilterRadio() {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const buildStyle = searchParams.get("build-style");
+
   return (
-    <Form method="get">
+    <Form method="get" action={location.pathname}>
       <RadioGroup
         name="build-style"
         defaultValue="all"
+        value={buildStyle ?? "all"}
         aria-label="View density"
       >
         <Flex align="center" gap={0}>
