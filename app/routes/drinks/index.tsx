@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
-import { getDrinks, filterDrinks } from "~/drink";
+import { getDrinks } from "~/drink";
 import type { Drink } from "~/drink";
 
 import DrinkList from "~/components/drinkList";
@@ -14,20 +14,17 @@ export const meta: MetaFunction = () => {
 export const loader: LoaderFunction = async ({ request, params }) => {
   const url = new URL(request.url);
   const searchValues = Object.fromEntries(url.searchParams.entries());
-
-  const drinks = await getDrinks();
-
-  return {
-    drinks,
-    searchValues: { ...searchValues, buildStyle: searchValues["build-style"] },
+  const filterValues = {
+    ...searchValues,
+    buildStyle: searchValues["build-style"],
   };
+  const drinks = await getDrinks(filterValues);
+
+  return drinks;
 };
 
 export default function Drink() {
-  const {
-    drinks,
-    searchValues: { buildStyle },
-  } = useLoaderData();
+  const drinks = useLoaderData<typeof loader>();
 
-  return <DrinkList drinks={filterDrinks(drinks, { buildStyle })} />;
+  return <DrinkList drinks={drinks} />;
 }

@@ -33,14 +33,14 @@ export type FilterOptions = {
 
 export function filterDrinks(
   drinks: Drink[],
-  { buildStyle, search }: FilterOptions
+  filterOptions: FilterOptions
 ): Drink[] {
-  if (buildStyle) {
-    drinks = filterByBuildStyle(drinks, buildStyle);
+  if (!!filterOptions?.buildStyle) {
+    drinks = filterByBuildStyle(drinks, filterOptions.buildStyle);
   }
 
-  if (search) {
-    drinks = filterBySearch(drinks, search);
+  if (!!filterOptions?.search) {
+    drinks = filterBySearch(drinks, filterOptions.search);
   }
 
   return drinks;
@@ -84,11 +84,14 @@ async function sanityFetchDrinks({
 }
 
 // drink index
-export async function getDrinks(): Promise<Drink[]> {
+export async function getDrinks(
+  filterOptions: FilterOptions
+): Promise<Drink[]> {
   const query =
     '*[_type == "dinnerCocktail"] {name, ingredients, "categories": categories[]->title}';
+  const drinks = await sanityFetchDrinks({ query });
 
-  return await sanityFetchDrinks({ query });
+  return filterDrinks(drinks, filterOptions);
 }
 
 // $category index
