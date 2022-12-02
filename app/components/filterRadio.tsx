@@ -49,9 +49,6 @@ const StyledRadio = styled(RadioGroupPrimitive.Item)`
   &:hover {
     background-color: var(--color-cream);
   }
-  &:focus {
-    outline: 2px solid var(--color-orange);
-  }
 `;
 
 const StyledIndicator = styled(RadioGroupPrimitive.Indicator)`
@@ -105,8 +102,4 @@ const StyledButton = styled.button`
   text-align: center;
   background-color: white;
   color: var(--color-brown);
-
-  &:focus {
-    outline: 2px solid var(--color-orange);
-  }
 `;

@@ -29,7 +29,6 @@ export default function NavLink({ href, text, isActive }: NavLinkProps) {
 
 const StyledLink = styled(RemixNavLink)`
   &:focus {
-    outline: 2px solid var(--color-orange);
     outline-offset: -6px;
     box-shadow: none;
     border-radius: 0;

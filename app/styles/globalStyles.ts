@@ -77,6 +77,9 @@ export default createGlobalStyle`
   * {
     margin: 0;
   }
+  * :focus {
+    outline: var(--outline);
+  }
   html {
     background-color: var(--color-cream);
     background-image: url(${TopMobileBlob}), url(${BottomMobileBlob});

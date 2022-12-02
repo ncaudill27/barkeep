@@ -61,10 +61,6 @@ const IconButton = styled(motion.button)`
   border: 2px solid var(--color-yellow);
   z-index: 1;
 
-  &:focus {
-    outline: 2px solid var(--color-orange);
-  }
-
   &:hover {
     cursor: pointer;
   }

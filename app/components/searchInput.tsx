@@ -25,7 +25,7 @@ export default function SearchInput({
       <TextInput
         type="search"
         name="search"
-        placeholder="Search drink..."
+        placeholder="Search drink"
         autoComplete="off"
         value={search}
         onChange={handleChange}
@@ -58,8 +58,8 @@ export const TextInput = styled.input`
   color: var(--color-brown);
 
   &:focus {
+    box-shadow: 0 0 0 1px var(--color-brown);
     background-color: var(--color-cream-light);
-    outline: 2px solid var(--color-orange);
   }
 
   &::placeholder {

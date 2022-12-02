@@ -13,10 +13,6 @@ export const Content = styled(PopoverPrimitive.Content)`
   border-radius: 10px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-
-  &:focus {
-    outline: 2px solid var(--color-orange);
-  }
 `;
 
 export const CloseButton = styled(PopoverPrimitive.Close)`
@@ -34,8 +30,5 @@ export const CloseButton = styled(PopoverPrimitive.Close)`
 
   &:hover {
     background-color: var(--color-brown);
-  }
-  &:focus {
-    outline: 2px solid var(--color-orange);
   }
 `;

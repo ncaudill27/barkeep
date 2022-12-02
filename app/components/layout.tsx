@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 type LayoutProps = {
@@ -6,7 +6,27 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  return <RootWrapper>{children}</RootWrapper>;
+  const ref = useRef<HTMLBodyElement>();
+  const [outline, setOutline] = useState("2px solid var(--color-orange)");
+
+  useEffect(() => {
+    if (!!ref?.current) {
+      ref.current.addEventListener("click", () => {
+        setOutline("none");
+      });
+    }
+  });
+
+  return (
+    <RootWrapper
+      ref={ref}
+      style={{
+        "--outline": outline,
+      }}
+    >
+      {children}
+    </RootWrapper>
+  );
 };
 
 const RootWrapper = styled.body`
@@ -17,6 +37,10 @@ const RootWrapper = styled.body`
   margin-left: auto;
   margin-right: auto;
   min-height: 100vh;
+
+  & *:focus {
+    outline: var(--outline);
+  }
 `;
 
 export default Layout;
