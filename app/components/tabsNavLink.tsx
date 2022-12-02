@@ -13,12 +13,16 @@ type NavLinkProps = {
 export default function NavLink({ href, text, isActive }: NavLinkProps) {
   const location = useLocation();
 
+  console.log("\n#####\n", "LOCATION.SEARCH: ", location.search, "\n#####\n");
   return (
     <Trigger asChild value={href.slice(1)}>
       <StyledLink
         style={{ color: isActive ? "var(--color-cream)" : "inherit" }}
         key={href}
-        to={{ pathname: href, search: location.search }}
+        to={{
+          pathname: href,
+          search: location.search.replace(/\?search.*|\?build-style=all/, ""),
+        }}
       >
         {text}
         {isActive && <MotionSpan layoutId="active" />}
