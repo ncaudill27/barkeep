@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { filterDrinks, getDrinkUrl } from "~/drink";
+import { filterBySearch, getDrinkUrl } from "~/drink";
 import type { Drink } from "~/drink";
 import BaseLink from "./baseLink";
 
@@ -24,7 +24,7 @@ export default function SearchList({
     >
       {isVisible && (
         <StyledList>
-          {filterDrinks(drinks, { search }).map((d) => (
+          {filterBySearch(drinks, search).map((d) => (
             <StyledLink key={d.name} to={getDrinkUrl(d)}>
               {d.name}
             </StyledLink>

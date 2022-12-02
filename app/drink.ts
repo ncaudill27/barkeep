@@ -31,10 +31,14 @@ export type FilterOptions = {
   search?: string;
 };
 
-export function filterDrinks(
-  drinks: Drink[],
-  filterOptions: FilterOptions
-): Drink[] {
+export function serverFilterDrinks(drinks: Drink[], request: Request): Drink[] {
+  const url = new URL(request.url);
+  const searchValues = Object.fromEntries(url.searchParams.entries());
+  const filterOptions: FilterOptions = {
+    ...searchValues,
+    buildStyle: searchValues["build-style"],
+  };
+
   if (!!filterOptions?.buildStyle) {
     drinks = filterByBuildStyle(drinks, filterOptions.buildStyle);
   }
@@ -58,7 +62,7 @@ function filterByBuildStyle(drinks: Drink[], buildStyle: string) {
   );
 }
 
-function filterBySearch(drinks: Drink[], search: string) {
+export function filterBySearch(drinks: Drink[], search: string) {
   const regex = new RegExp(search, "i");
   return drinks.filter((drink) => regex.test(drink.name));
 }
@@ -90,35 +94,33 @@ export async function getDrinks(request?: Request): Promise<Drink[]> {
   let drinks = await sanityFetchDrinks({ query });
   // filter drinks if needed
   if (request) {
-    const url = new URL(request.url);
-    const searchValues = Object.fromEntries(url.searchParams.entries());
-    const filterOptions = {
-      ...searchValues,
-      buildStyle: searchValues["build-style"],
-    };
-
-    drinks = filterDrinks(drinks, filterOptions);
+    drinks = serverFilterDrinks(drinks, request);
   }
 
   return drinks;
 }
 
 // $category index
-export async function getDrinksByCategory(category: string): Promise<Drink[]> {
+export async function getDrinksByCategory(
+  category: string,
+  request: Request
+): Promise<Drink[]> {
   const query =
     '*[count((categories[]->title)[lower(@) in $array]) > 0] {name, ingredients, "categories": categories[]->title}';
   const array = getFilteredCategoryArray(category);
   const params = { array };
 
-  return await sanityFetchDrinks({ query, params });
+  return await sanityFetchDrinks({ query, params }).then((drinks) =>
+    serverFilterDrinks(drinks, request)
+  );
 }
 
 // $drink get
 export async function getDrink(name: string) {
-  const query = `*[_type == "dinnerCocktail" && name == $name] {name, garnish, glassware, ingredients, 'build': body }`;
+  const query = `*[_type == "dinnerCocktail" && name == $name][0] {name, garnish, glassware, ingredients, 'build': body }`;
   const params = { name };
 
-  const [drink] = await sanityFetchDrinks({ query, params });
+  const drink = await sanityFetchDrinks({ query, params });
   return drink;
 }
 

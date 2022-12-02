@@ -17,6 +17,7 @@ export const meta: MetaFunction = ({ params }) => {
 
 export const loader: LoaderFunction = ({ params }) => {
   invariant(params.name, "Expected params.name");
+
   return getDrink(params.name);
 };
 
