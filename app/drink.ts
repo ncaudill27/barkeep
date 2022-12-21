@@ -64,7 +64,11 @@ function filterByBuildStyle(drinks: Drink[], buildStyle: string) {
 
 export function filterBySearch(drinks: Drink[], search: string) {
   const regex = new RegExp(search, "i");
-  return drinks.filter((drink) => regex.test(drink.name));
+  return drinks.filter(
+    (drink) =>
+      regex.test(drink.name) ||
+      drink.ingredients.some(({ name }) => regex.test(name))
+  );
 }
 
 // helper function used in getDrinksByCategory
