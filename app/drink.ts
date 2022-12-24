@@ -12,8 +12,8 @@ export type Drink = {
 
 export type Ingredient = {
   name: string;
-  amount: string;
-  measurement: string;
+  amount?: string;
+  measurement?: string;
 };
 
 type SanityQueryProps = {

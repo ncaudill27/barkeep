@@ -51,4 +51,11 @@ const TertiaryHeading = styled(HeadingBase)`
 const QuaternaryHeading = styled.h4`
   margin-bottom: 8px;
 `;
+
+export const ThickHeading = styled(Heading)`
+  font-weight: var(--font-weight-black);
+  max-width: 385px;
+  margin-bottom: 8px;
+`;
+
 export default Heading;

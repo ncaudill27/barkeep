@@ -18,19 +18,17 @@ export default function Index() {
   const drinks = useLoaderData<typeof loader>();
 
   return (
-    <>
-      <Root value={category} activationMode="manual" defaultValue="" asChild>
-        <main>
-          <Nav category={category} />
-          <Content value={category}>
-            {/* needs full list of drinks for search */}
-            <Search drinks={drinks} />
-            <FilterPopover />
+    <Root value={category} activationMode="manual" defaultValue="" asChild>
+      <main>
+        <Nav category={category} />
+        <Content value={category}>
+          {/* needs full list of drinks for search */}
+          <Search drinks={drinks} />
+          <FilterPopover />
 
-            <Outlet />
-          </Content>
-        </main>
-      </Root>
-    </>
+          <Outlet />
+        </Content>
+      </main>
+    </Root>
   );
 }

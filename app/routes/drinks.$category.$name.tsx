@@ -22,7 +22,7 @@ export const loader: LoaderFunction = ({ params }) => {
 };
 
 export default function Drink() {
-  const drink = useLoaderData<Drink>();
+  const drink = useLoaderData<typeof loader>();
   const location = useLocation();
   const crumbs = location.pathname
     .split("/")
