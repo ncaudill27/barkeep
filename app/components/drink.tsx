@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { BatchContext } from "~/routes/batch";
 import * as Slider from "@radix-ui/react-slider";
@@ -17,33 +17,13 @@ export default function DrinkComponent({
   build,
   view = "show",
 }: Drink & { view: "show" | "batch" }) {
-  const isBatch = view === "batch";
-  let Wrapper = ShowWrapper;
-  if (isBatch) {
-    Wrapper = BatchWrapper;
-  }
-  const batchSize = useContext(BatchContext);
-
   return (
-    <Wrapper>
+    <ShowWrapper>
       <MainHeading view={view} name={name} />
       <Subheading>Ingredients</Subheading>
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
-      {isBatch && (
-        <BatchSlider
-          onValueChange={(value) =>
-            // TODO update single batched drink here
-            console.log("\n#####\n", "VALUE: ", value, "\n#####\n")
-          }
-          defaultValue={[batchSize]}
-          min={1}
-          max={50}
-          step={1}
-          onv
-        />
-      )}
       <Flex justify="space-between">
         {glassware && (
           <Flex.FlexChild flex="1">
@@ -64,7 +44,34 @@ export default function DrinkComponent({
           <BuildPortableText value={build} />
         </>
       )}
-    </Wrapper>
+    </ShowWrapper>
+  );
+}
+
+export function BatchedDrink({ name, ingredients }: Drink) {
+  const initialBatchSize = useContext(BatchContext);
+  const [batchSize, setBatchSize] = useState(initialBatchSize);
+
+  return (
+    <BatchWrapper>
+      <MainHeading view={view} name={name} />
+      <Subheading>Ingredients</Subheading>
+      {ingredients.map((ingredient) => (
+        <Ingredient key={ingredient.name} {...ingredient} />
+      ))}
+
+      <BatchSlider
+        onValueChange={(value) =>
+          // TODO update single batched drink here
+          console.log("\n#####\n", "VALUE: ", value, "\n#####\n")
+        }
+        defaultValue={[batchSize]}
+        min={1}
+        max={50}
+        step={1}
+        onv
+      />
+    </BatchWrapper>
   );
 }
 

@@ -7,7 +7,8 @@ import {
 
 export type BatchedRecipe = Drink & { batchSize?: number };
 
-export function useBatch(recipes: BatchedRecipe[], batchSize: number = 1) {
+// TODO turn this into a batch function for a single drink
+export function useBatch(recipes: BatchedRecipe[], batchSize: number) {
   // Initialize an empty array to store the batched recipes
   let batchedRecipes: BatchedRecipe[] = [];
   // Loop through each recipe
