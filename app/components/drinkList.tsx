@@ -14,12 +14,12 @@ export default function DrinkList({ drinks }: DrinkListProps) {
   return (
     <StyledList>
       {drinks.map((drink) => (
-        <StyledItem key={drink.name} to={getDrinkUrl(drink)}>
+        <DrinkLink key={drink.name} to={getDrinkUrl(drink)}>
           <Heading tag="h3">{drink.name}</Heading>
           <IngredientList wrap>
             {drink.ingredients.map(({ name }) => name).join(", ")}
           </IngredientList>
-        </StyledItem>
+        </DrinkLink>
       ))}
     </StyledList>
   );
@@ -32,7 +32,7 @@ const StyledList = styled.ul`
   list-style: none;
 `;
 
-const StyledItem = styled(BaseLink)`
+const DrinkLink = styled(BaseLink)`
   display: block;
   margin-right: 70px;
   margin-bottom: 16px;

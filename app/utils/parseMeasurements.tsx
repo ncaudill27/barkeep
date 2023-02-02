@@ -33,13 +33,13 @@ export const parseMeasurement = (measurement: string, amount: string) => {
 
   if (measurement === "ounces") measurement = "oz";
   if (first === "1" && second === undefined) {
-    measurement = measureSwitch(measurement);
+    measurement = makeSingular(measurement);
   }
 
   return measurement;
 };
 
-function measureSwitch(measurement: string) {
+function makeSingular(measurement: string) {
   switch (measurement) {
     case "dashes":
       return "dash";
