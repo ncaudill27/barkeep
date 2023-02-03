@@ -6,6 +6,7 @@ const Header = () => {
     <Wrapper>
       <BaseLink to="/">Barkeep Journal</BaseLink>
       <BaseLink to="/drinks">Cocktails</BaseLink>
+      <BaseLink to="/batch">Batch</BaseLink>
     </Wrapper>
   );
 };

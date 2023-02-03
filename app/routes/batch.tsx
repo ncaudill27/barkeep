@@ -10,10 +10,17 @@ import {
   ComboboxOption,
   ComboboxOptionText,
 } from "@reach/combobox";
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import type { Drink } from "~/drink";
-import { useBatch } from "~/hooks";
+import { BatchedRecipe, useBatch } from "~/hooks";
+import { parseMeasurement, renderAmount } from "~/utils/parseMeasurements";
+import Heading from "~/components/heading";
 
+export const meta: MetaFunction = () => {
+  return {
+    title: `Batch Calculator`,
+  };
+};
 export const loader: LoaderFunction = async () => {
   const drinks = await getDrinks();
 
@@ -23,45 +30,56 @@ export const loader: LoaderFunction = async () => {
 export default function Batch() {
   const drinks = useLoaderData<typeof loader>();
   const [search, setSearch] = useState("");
-  const handleChange = (e: any) => setSearch(e.target.value);
-
   const [batch, setBatch] = useState<Drink[]>([]);
-
-  const batchedDrinks = useBatch(batch, 10);
+  const [batchSize, setBatchSize] = useState();
+  const handleSearch = (e: any) => setSearch(e.target.value);
+  const handleBatchSize = (e: any) => setBatchSize(e.target.value);
+  const handleSelect = (drinkName: string) => {
+    const drink = filterBySearch(drinks, drinkName)[0];
+    setBatch((prev) => [...prev, drink]);
+  };
+  // TODO
+  const updateBatchSize = (recipe: BatchedRecipe) => {
+    // update batchsize on single recipe with slider
+  };
+  const batchedDrinks = useBatch(batch, batchSize);
 
   return (
     <>
-      <Combobox
-        openOnFocus
-        onSelect={(drinkName) => {
-          const drink = filterBySearch(drinks, drinkName)[0];
-          setBatch((prev) => [...prev, drink]);
-          setSearch("");
-        }}
-      >
-        <StyledComboInput
-          selectOnClick
-          autoComplete="false"
-          onChange={handleChange}
-          placeholder="Search recipe to batch"
+      <InputWrapper>
+        <Combobox openOnFocus onSelect={handleSelect}>
+          <StyledComboInput
+            selectOnClick
+            autoComplete="false"
+            onChange={handleSearch}
+            placeholder="Search recipe to batch"
+          />
+          <StyledPopover>
+            <StyledList>
+              {filterBySearch(drinks, search).map(({ name }) => (
+                <ComboboxOption value={name}>
+                  <ComboboxOptionText />
+                </ComboboxOption>
+              ))}
+            </StyledList>
+          </StyledPopover>
+        </Combobox>
+        <BatchSizeInput
+          type="number"
+          value={batchSize}
+          min={1}
+          onChange={handleBatchSize}
+          placeholder="Serving size"
         />
-        <StyledPopover>
-          <StyledList>
-            {filterBySearch(drinks, search).map(({ name }) => (
-              <ComboboxOption value={name}>
-                <ComboboxOptionText />
-              </ComboboxOption>
-            ))}
-          </StyledList>
-        </StyledPopover>
-      </Combobox>
+      </InputWrapper>
       {batchedDrinks.map(({ name, ingredients }) => (
         <>
           <div>{name}</div>
           <ul>
             {ingredients.map(({ name, amount, measurement }) => (
               <li>
-                {name}: {amount} {measurement}
+                {name}: {renderAmount(amount)}{" "}
+                {parseMeasurement(measurement, amount)}
               </li>
             ))}
           </ul>
@@ -71,16 +89,20 @@ export default function Batch() {
   );
 }
 
+const InputWrapper = styled.div`
+  margin-bottom: 40px;
+  display: flex;
+  gap: 8px;
+`;
+
 const StyledPopover = styled(ComboboxPopover)``;
 
 const StyledList = styled(ComboboxList)`
+  padding-top: 16px;
   padding-left: 24px;
 `;
 
 const StyledComboInput = styled(ComboboxInput)`
-  gap: 8px;
-  width: min(546px, 100%);
-  margin-bottom: 40px;
   padding-left: 8px;
   height: 44px;
 
@@ -98,12 +120,24 @@ const StyledComboInput = styled(ComboboxInput)`
     font-weight: 400;
     color: var(--color-brown-light-transparent);
   }
+`;
 
-  /* remove WebKit icons */
-  &::-webkit-search-decoration,
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-results-button,
-  &::-webkit-search-results-decoration {
-    display: none;
+const BatchSizeInput = styled.input`
+  padding-left: 8px;
+  height: 44px;
+
+  border: 1px solid var(--color-brown);
+  border-radius: 0px;
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+
+  &:focus {
+    box-shadow: 0 0 0 1px var(--color-brown);
+    background-color: var(--color-cream-light);
+  }
+
+  &::placeholder {
+    font-weight: 400;
+    color: var(--color-brown-light-transparent);
   }
 `;
