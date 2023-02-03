@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Heading from "~/components/heading";
+import Heading, { ThickHeading as LandingHeading } from "~/components/heading";
 import Banner from "~/components/banner";
 
 export default function Index() {
@@ -38,7 +38,8 @@ export default function Index() {
             Save your favorite cocktails and add notes for your personal tweaks
           </li>
           <li>
-            Easily batch for your next event with the Batch Calculator&#8482;
+            Easily batch for your next event with the Batch
+            Calculator&#8482;&#42;
           </li>
           <li>
             Training content (e.g. How to shake, stir, and profile drinks)
@@ -49,12 +50,6 @@ export default function Index() {
     </>
   );
 }
-
-const LandingHeading = styled(Heading)`
-  font-weight: var(--font-weight-black);
-  max-width: 385px;
-  margin-bottom: 8px;
-`;
 
 const SubHeading = styled.p`
   margin-bottom: 100px;

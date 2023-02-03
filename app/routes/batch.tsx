@@ -14,7 +14,7 @@ import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import type { Drink } from "~/drink";
 import { BatchedRecipe, useBatch } from "~/hooks";
 import { parseMeasurement, renderAmount } from "~/utils/parseMeasurements";
-import Heading from "~/components/heading";
+import { ThickHeading } from "~/components/heading";
 
 export const meta: MetaFunction = () => {
   return {
@@ -46,31 +46,43 @@ export default function Batch() {
 
   return (
     <>
+      <ThickHeading tag="h1">You want how many?</ThickHeading>
+      <p>We get it math is hard.</p>
+      <p>
+        Use our Batch Calculator&#8482;&#42; and spend more time drinking or
+        whatever.
+      </p>
       <InputWrapper>
-        <Combobox openOnFocus onSelect={handleSelect}>
-          <StyledComboInput
-            selectOnClick
-            autoComplete="false"
-            onChange={handleSearch}
-            placeholder="Search recipe to batch"
+        <label>
+          Add recipe
+          <Combobox openOnFocus onSelect={handleSelect}>
+            <StyledComboInput
+              selectOnClick
+              autoComplete="false"
+              onChange={handleSearch}
+              placeholder="Search recipe to batch"
+            />
+            <StyledPopover>
+              <StyledList>
+                {filterBySearch(drinks, search).map(({ name }) => (
+                  <ComboboxOption value={name}>
+                    <ComboboxOptionText />
+                  </ComboboxOption>
+                ))}
+              </StyledList>
+            </StyledPopover>
+          </Combobox>
+        </label>
+        <label style={{ flexShrink: 3 }}>
+          Count'em
+          <BatchSizeInput
+            type="number"
+            value={batchSize}
+            min={1}
+            onChange={handleBatchSize}
+            placeholder="Serving size"
           />
-          <StyledPopover>
-            <StyledList>
-              {filterBySearch(drinks, search).map(({ name }) => (
-                <ComboboxOption value={name}>
-                  <ComboboxOptionText />
-                </ComboboxOption>
-              ))}
-            </StyledList>
-          </StyledPopover>
-        </Combobox>
-        <BatchSizeInput
-          type="number"
-          value={batchSize}
-          min={1}
-          onChange={handleBatchSize}
-          placeholder="Serving size"
-        />
+        </label>
       </InputWrapper>
       {batchedDrinks.map(({ name, ingredients }) => (
         <>
@@ -90,12 +102,15 @@ export default function Batch() {
 }
 
 const InputWrapper = styled.div`
+  margin-top: 40px;
   margin-bottom: 40px;
   display: flex;
   gap: 8px;
 `;
 
-const StyledPopover = styled(ComboboxPopover)``;
+const StyledPopover = styled(ComboboxPopover)`
+  background-color: var(--color-cream);
+`;
 
 const StyledList = styled(ComboboxList)`
   padding-top: 16px;
@@ -123,6 +138,7 @@ const StyledComboInput = styled(ComboboxInput)`
 `;
 
 const BatchSizeInput = styled.input`
+  display: block;
   padding-left: 8px;
   height: 44px;
 
