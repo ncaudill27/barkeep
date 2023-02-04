@@ -13,7 +13,9 @@ export default function Ingredient({
     <StyledIngredient {...props}>
       <Name>{name}</Name>
       <span>{amount && renderAmount(amount)}</span>
-      <span>{amount && parseMeasurement(measurement, amount)}</span>
+      <span>
+        {amount && measurement && parseMeasurement(measurement, amount)}
+      </span>
     </StyledIngredient>
   );
 }

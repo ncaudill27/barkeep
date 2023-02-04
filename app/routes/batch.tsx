@@ -13,8 +13,9 @@ import {
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import type { Drink } from "~/drink";
 import { BatchedRecipe, useBatch } from "~/hooks";
-import { parseMeasurement, renderAmount } from "~/utils/parseMeasurements";
+
 import { ThickHeading } from "~/components/heading";
+import Ingredient from "~/components/ingredient";
 
 export const meta: MetaFunction = () => {
   return {
@@ -88,11 +89,8 @@ export default function Batch() {
         <>
           <div>{name}</div>
           <ul>
-            {ingredients.map(({ name, amount, measurement }) => (
-              <li>
-                {name}: {renderAmount(amount)}{" "}
-                {parseMeasurement(measurement, amount)}
-              </li>
+            {ingredients.map((ingredient) => (
+              <Ingredient key={ingredient.name} {...ingredient} />
             ))}
           </ul>
         </>
