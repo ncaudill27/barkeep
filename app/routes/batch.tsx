@@ -53,7 +53,7 @@ export default function Batch() {
         whatever.
       </p>
       <InputWrapper>
-        <label>
+        <StyledLabel>
           Add recipe
           <Combobox openOnFocus onSelect={handleSelect}>
             <StyledComboInput
@@ -65,15 +65,15 @@ export default function Batch() {
             <StyledPopover>
               <StyledList>
                 {filterBySearch(drinks, search).map(({ name }) => (
-                  <ComboboxOption value={name}>
+                  <StyledOption value={name}>
                     <ComboboxOptionText />
-                  </ComboboxOption>
+                  </StyledOption>
                 ))}
               </StyledList>
             </StyledPopover>
           </Combobox>
-        </label>
-        <label style={{ flexShrink: 3 }}>
+        </StyledLabel>
+        <StyledLabel style={{ flexShrink: 3 }}>
           Count'em
           <BatchSizeInput
             type="number"
@@ -82,7 +82,7 @@ export default function Batch() {
             onChange={handleBatchSize}
             placeholder="Serving size"
           />
-        </label>
+        </StyledLabel>
       </InputWrapper>
       {batchedDrinks.map(({ name, ingredients }) => (
         <>
@@ -104,17 +104,27 @@ export default function Batch() {
 const InputWrapper = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
-  display: flex;
-  gap: 8px;
 `;
 
-const StyledPopover = styled(ComboboxPopover)`
-  background-color: var(--color-cream);
-`;
+const StyledComboBox = styled(Combobox)``;
 
 const StyledList = styled(ComboboxList)`
-  padding-top: 16px;
-  padding-left: 24px;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding-top: 8px;
+  padding-right: 1px;
+  padding-bottom: 8px;
+  padding-left: 28px;
+
+  max-height: 30vh;
+  background-color: var(--color-cream-light);
+  overflow-y: auto;
+  border: 2px solid var(--color-brown);
+  border-top: 0;
+`;
+
+const StyledLabel = styled.label`
+  display: inline-block;
 `;
 
 const StyledComboInput = styled(ComboboxInput)`
@@ -134,6 +144,18 @@ const StyledComboInput = styled(ComboboxInput)`
   &::placeholder {
     font-weight: 400;
     color: var(--color-brown-light-transparent);
+  }
+`;
+
+const StyledPopover = styled(ComboboxPopover)`
+  ${StyledComboInput}:focus {
+    border-left: 1px solid var(--color-brown);
+  }
+`;
+
+const StyledOption = styled(ComboboxOption)`
+  [data-reach-combobox-option][data-highlighted] {
+    background-color: red;
   }
 `;
 
