@@ -15,7 +15,7 @@ import type { Drink } from "~/drink";
 import { BatchedRecipe, useBatch } from "~/hooks";
 
 import { ThickHeading } from "~/components/heading";
-import Ingredient from "~/components/ingredient";
+import DrinkComponent from "~/components/drink";
 
 export const meta: MetaFunction = () => {
   return {
@@ -56,7 +56,7 @@ export default function Batch() {
       <InputWrapper>
         <StyledLabel>
           Add recipe
-          <Combobox openOnFocus onSelect={handleSelect}>
+          <StyledComboBox openOnFocus onSelect={handleSelect}>
             <StyledComboInput
               selectOnClick
               autoComplete="false"
@@ -72,7 +72,7 @@ export default function Batch() {
                 ))}
               </StyledList>
             </StyledPopover>
-          </Combobox>
+          </StyledComboBox>
         </StyledLabel>
         <StyledLabel style={{ flexShrink: 3 }}>
           Count'em
@@ -85,15 +85,8 @@ export default function Batch() {
           />
         </StyledLabel>
       </InputWrapper>
-      {batchedDrinks.map(({ name, ingredients }) => (
-        <>
-          <div>{name}</div>
-          <ul>
-            {ingredients.map((ingredient) => (
-              <Ingredient key={ingredient.name} {...ingredient} />
-            ))}
-          </ul>
-        </>
+      {batchedDrinks.map((drink) => (
+        <DrinkComponent key={drink.name} view="batch" {...drink} />
       ))}
     </>
   );
@@ -104,13 +97,17 @@ const InputWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
-const StyledComboBox = styled(Combobox)``;
+const StyledComboBox = styled(Combobox)`
+  [data-reach-combobox-option][data-highlighted] {
+    background-color: red;
+  }
+`;
 
 const StyledList = styled(ComboboxList)`
   margin-left: -1px;
   margin-right: -1px;
   padding-top: 8px;
-  padding-right: 1px;
+  padding-right: 4px;
   padding-bottom: 8px;
   padding-left: 28px;
 
@@ -153,9 +150,7 @@ const StyledComboInput = styled(ComboboxInput)`
 const StyledPopover = styled(ComboboxPopover)``;
 
 const StyledOption = styled(ComboboxOption)`
-  [data-reach-combobox-option][data-highlighted] {
-    background-color: red;
-  }
+  /* not doing anything */
 `;
 
 const BatchSizeInput = styled.input`

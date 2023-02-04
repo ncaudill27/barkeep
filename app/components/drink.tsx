@@ -12,10 +12,16 @@ export default function DrinkComponent({
   glassware,
   garnish,
   build,
-}: Drink) {
+  view = "show",
+}: Drink & { view: "show" | "batch" }) {
+  let Wrapper = ShowWrapper;
+  if (view === "batch") {
+    Wrapper = BatchWrapper;
+  }
+
   return (
     <Wrapper>
-      <Heading tag="h1">{name}</Heading>
+      <MainHeading view={view} name={name} />
       <Subheading>Ingredients</Subheading>
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
@@ -44,12 +50,25 @@ export default function DrinkComponent({
   );
 }
 
-const Wrapper = styled.div`
+const ShowWrapper = styled.div`
   max-width: 400px;
   margin-top: 80px;
   padding-bottom: 40px;
 `;
 
+const BatchWrapper = styled.div`
+  max-width: 400px;
+  padding-bottom: 24px;
+`;
+
+function MainHeading({ view, name }: { view: "show" | "batch"; name: string }) {
+  switch (view) {
+    case "batch":
+      return <Heading tag="h2">{name}</Heading>;
+    default:
+      return <Heading tag="h1">{name}</Heading>;
+  }
+}
 function Subheading(props: any) {
   return <StyledSubheading tag="h3" {...props} />;
 }
