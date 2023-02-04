@@ -119,8 +119,13 @@ const StyledList = styled(ComboboxList)`
   max-height: 30vh;
   background-color: var(--color-cream-light);
   overflow-y: auto;
+
   border: 2px solid var(--color-brown);
   border-top: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const StyledLabel = styled.label`
@@ -147,11 +152,7 @@ const StyledComboInput = styled(ComboboxInput)`
   }
 `;
 
-const StyledPopover = styled(ComboboxPopover)`
-  ${StyledComboInput}:focus {
-    border-left: 1px solid var(--color-brown);
-  }
-`;
+const StyledPopover = styled(ComboboxPopover)``;
 
 const StyledOption = styled(ComboboxOption)`
   [data-reach-combobox-option][data-highlighted] {
