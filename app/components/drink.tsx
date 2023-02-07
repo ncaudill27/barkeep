@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Slider from "@radix-ui/react-slider";
 import type { Drink } from "~/drink";
 
 import Heading from "./heading";
@@ -14,8 +15,9 @@ export default function DrinkComponent({
   build,
   view = "show",
 }: Drink & { view: "show" | "batch" }) {
+  const isBatch = view === "batch";
   let Wrapper = ShowWrapper;
-  if (view === "batch") {
+  if (isBatch) {
     Wrapper = BatchWrapper;
   }
 
@@ -26,6 +28,14 @@ export default function DrinkComponent({
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
+      {isBatch && (
+        <BatchSlider defaultValue={[50]} max={100} step={1}>
+          <Track>
+            <Range />
+          </Track>
+          <Thumb />
+        </BatchSlider>
+      )}
       <Flex justify="space-between">
         {glassware && (
           <Flex.FlexChild flex="1">
@@ -58,7 +68,48 @@ const ShowWrapper = styled.div`
 
 const BatchWrapper = styled.div`
   max-width: 400px;
-  padding-bottom: 24px;
+  padding: 32px;
+  border-radius: 2px;
+  border: 2px solid var(--color-brown);
+`;
+
+const BatchSlider = styled(Slider.Root)`
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: 200px;
+
+  &[data-orientation="horizontal"] {
+    height: 20px;
+  }
+`;
+
+const Track = styled(Slider.Track)`
+  background-color: var(--color-brown);
+  position: relative;
+  flex-grow: 1;
+  border-radius: 50%;
+
+  &[data-orientation="horizontal"] {
+    height: 3px;
+  }
+`;
+
+const Range = styled(Slider.Range)`
+  position: absolute;
+  background-color: var(--color-pink);
+  border-radius: 50%;
+  height: 100%;
+`;
+
+const Thumb = styled(Slider.Thumb)`
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-green);
+  border-radius: 10px;
 `;
 
 function MainHeading({ view, name }: { view: "show" | "batch"; name: string }) {
