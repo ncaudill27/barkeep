@@ -118,8 +118,18 @@ const StyledList = styled(ComboboxList)`
   border: 2px solid var(--color-brown);
   border-top: 0;
 
+  --scrollbar-foreground: var(--color-pink);
+  --scrollbar-background: var(--color-brown-light);
+  scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
   &::-webkit-scrollbar {
-    display: none;
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-foreground);
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-background);
   }
 `;
 

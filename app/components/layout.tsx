@@ -41,6 +41,20 @@ const RootWrapper = styled.body`
   & *:focus {
     outline: var(--outline);
   }
+
+  --scrollbar-foreground: var(--color-orange);
+  --scrollbar-background: var(--color-brown);
+  scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-foreground);
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-background);
+  }
 `;
 
 export default Layout;
