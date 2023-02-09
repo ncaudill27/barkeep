@@ -6,6 +6,8 @@ import Heading from "./heading";
 import Flex from "./flex";
 import Ingredient from "./ingredient";
 import BuildPortableText from "./buildPortableText";
+import { useContext } from "react";
+import { BatchContext } from "~/routes/batch";
 
 export default function DrinkComponent({
   name,
@@ -28,14 +30,7 @@ export default function DrinkComponent({
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
-      {isBatch && (
-        <BatchSlider defaultValue={[50]} max={100} step={1}>
-          <Track>
-            <Range />
-          </Track>
-          <Thumb />
-        </BatchSlider>
-      )}
+      {isBatch && <BatchSlider />}
       <Flex justify="space-between">
         {glassware && (
           <Flex.FlexChild flex="1">
@@ -60,6 +55,18 @@ export default function DrinkComponent({
   );
 }
 
+function BatchSlider() {
+  const batchSize = useContext(BatchContext);
+  return (
+    <StyledSlider defaultValue={[batchSize]} min={1} max={50} step={1}>
+      <Track>
+        <Range />
+      </Track>
+      <Thumb />
+    </StyledSlider>
+  );
+}
+
 const ShowWrapper = styled.div`
   max-width: 400px;
   margin-top: 80px;
@@ -73,7 +80,7 @@ const BatchWrapper = styled.div`
   border: 2px solid var(--color-brown);
 `;
 
-const BatchSlider = styled(Slider.Root)`
+const StyledSlider = styled(Slider.Root)`
   position: relative;
   display: flex;
   align-items: center;

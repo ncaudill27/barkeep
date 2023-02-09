@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import styled from "styled-components";
 import { useLoaderData } from "@remix-run/react";
 import { filterBySearch, getDrinks } from "~/drink";
@@ -28,11 +28,13 @@ export const loader: LoaderFunction = async () => {
   return drinks;
 };
 
+export const BatchContext = createContext(1);
+
 export default function Batch() {
   const drinks = useLoaderData<typeof loader>();
   const [search, setSearch] = useState("");
   const [batch, setBatch] = useState<Drink[]>([]);
-  const [batchSize, setBatchSize] = useState();
+  const [batchSize, setBatchSize] = useState(1);
   const handleSearch = (e: any) => setSearch(e.target.value);
   const handleBatchSize = (e: any) => setBatchSize(e.target.value);
   const handleSelect = (drinkName: string) => {
@@ -48,7 +50,7 @@ export default function Batch() {
   const batchedDrinks = useBatch(batch, batchSize);
 
   return (
-    <>
+    <BatchContext.Provider value={batchSize}>
       <ThickHeading tag="h1">You want how many?</ThickHeading>
       <p>We get it math is hard.</p>
       <p>
@@ -90,7 +92,7 @@ export default function Batch() {
       {batchedDrinks.map((drink) => (
         <DrinkComponent key={drink.name} view="batch" {...drink} />
       ))}
-    </>
+    </BatchContext.Provider>
   );
 }
 
