@@ -1,4 +1,6 @@
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { BatchContext } from "~/routes/batch";
 import * as Slider from "@radix-ui/react-slider";
 import type { Drink } from "~/drink";
 
@@ -6,8 +8,6 @@ import Heading from "./heading";
 import Flex from "./flex";
 import Ingredient from "./ingredient";
 import BuildPortableText from "./buildPortableText";
-import { useContext } from "react";
-import { BatchContext } from "~/routes/batch";
 
 export default function DrinkComponent({
   name,
@@ -22,6 +22,7 @@ export default function DrinkComponent({
   if (isBatch) {
     Wrapper = BatchWrapper;
   }
+  const batchSize = useContext(BatchContext);
 
   return (
     <Wrapper>
@@ -30,7 +31,18 @@ export default function DrinkComponent({
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
-      {isBatch && <BatchSlider />}
+      {isBatch && (
+        <BatchSlider
+          onValueChange={(value) =>
+            console.log("\n#####\n", "VALUE: ", value, "\n#####\n")
+          }
+          defaultValue={[batchSize]}
+          min={1}
+          max={50}
+          step={1}
+          onv
+        />
+      )}
       <Flex justify="space-between">
         {glassware && (
           <Flex.FlexChild flex="1">
@@ -55,17 +67,18 @@ export default function DrinkComponent({
   );
 }
 
-function BatchSlider() {
-  const batchSize = useContext(BatchContext);
+const BatchSlider = React.forwardRef((props, forwardedRef) => {
+  const value = props.value || props.defaultValue;
+  console.log("\n#####\n", "VALUE: ", value, "\n#####\n");
   return (
-    <StyledSlider defaultValue={[batchSize]} min={1} max={50} step={1}>
+    <StyledSlider {...props} ref={forwardedRef}>
       <Track>
         <Range />
       </Track>
       <Thumb />
     </StyledSlider>
   );
-}
+});
 
 const ShowWrapper = styled.div`
   max-width: 400px;
@@ -94,7 +107,7 @@ const StyledSlider = styled(Slider.Root)`
 `;
 
 const Track = styled(Slider.Track)`
-  background-color: var(--color-brown);
+  background-color: var(--color-pink);
   position: relative;
   flex-grow: 1;
   border-radius: 50%;
@@ -106,7 +119,7 @@ const Track = styled(Slider.Track)`
 
 const Range = styled(Slider.Range)`
   position: absolute;
-  background-color: var(--color-pink);
+  background-color: var(--color-brown-light);
   border-radius: 50%;
   height: 100%;
 `;
@@ -115,7 +128,8 @@ const Thumb = styled(Slider.Thumb)`
   display: block;
   width: 20px;
   height: 20px;
-  background-color: var(--color-green);
+  background-color: var(--color-brown);
+  border: 2px solid var(--color-yellow);
   border-radius: 10px;
 `;
 
