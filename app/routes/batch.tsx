@@ -36,8 +36,10 @@ export default function Batch() {
   const handleSearch = (e: any) => setSearch(e.target.value);
   const handleBatchSize = (e: any) => setBatchSize(e.target.value);
   const handleSelect = (drinkName: string) => {
-    const drink = filterBySearch(drinks, drinkName)[0];
-    setBatch((prev) => [...prev, drink]);
+    if (!batch.some(({ name }) => name === drinkName)) {
+      const drink = filterBySearch(drinks, drinkName)[0];
+      setBatch((prev) => [...prev, drink]);
+    }
   };
   // TODO
   const updateBatchSize = (recipe: BatchedRecipe) => {
