@@ -34,6 +34,7 @@ export default function DrinkComponent({
       {isBatch && (
         <BatchSlider
           onValueChange={(value) =>
+            // TODO update single batched drink here
             console.log("\n#####\n", "VALUE: ", value, "\n#####\n")
           }
           defaultValue={[batchSize]}
@@ -67,6 +68,7 @@ export default function DrinkComponent({
   );
 }
 
+// TODO probably remove forwardRef
 const BatchSlider = React.forwardRef((props, forwardedRef) => {
   const value = props.value || props.defaultValue;
   console.log("\n#####\n", "VALUE: ", value, "\n#####\n");
