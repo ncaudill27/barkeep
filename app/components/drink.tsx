@@ -15,35 +15,14 @@ export default function DrinkComponent({
   glassware,
   garnish,
   build,
-  view = "show",
-}: Drink & { view: "show" | "batch" }) {
-  const isBatch = view === "batch";
-  let Wrapper = ShowWrapper;
-  if (isBatch) {
-    Wrapper = BatchWrapper;
-  }
-  const batchSize = useContext(BatchContext);
-
+}: Drink) {
   return (
-    <Wrapper>
-      <MainHeading view={view} name={name} />
+    <ShowWrapper>
+      <MainHeading view="show" name={name} />
       <Subheading>Ingredients</Subheading>
       {ingredients.map((ingredient) => (
         <Ingredient key={ingredient.name} {...ingredient} />
       ))}
-      {isBatch && (
-        <BatchSlider
-          onValueChange={(value) =>
-            // TODO update single batched drink here
-            console.log("\n#####\n", "VALUE: ", value, "\n#####\n")
-          }
-          defaultValue={[batchSize]}
-          min={1}
-          max={50}
-          step={1}
-          onv
-        />
-      )}
       <Flex justify="space-between">
         {glassware && (
           <Flex.FlexChild flex="1">
@@ -64,7 +43,32 @@ export default function DrinkComponent({
           <BuildPortableText value={build} />
         </>
       )}
-    </Wrapper>
+    </ShowWrapper>
+  );
+}
+
+export function BatchDrink({ name, ingredients }: Drink) {
+  const batchSize = useContext(BatchContext);
+
+  return (
+    <BatchWrapper>
+      <MainHeading view="batch" name={name} />
+      <Subheading>Ingredients</Subheading>
+      {ingredients.map((ingredient) => (
+        <Ingredient key={ingredient.name} {...ingredient} />
+      ))}
+      <BatchSlider
+        onValueChange={(value) =>
+          // TODO update single batched drink here
+          console.log("\n#####\n", "VALUE: ", value, "\n#####\n")
+        }
+        defaultValue={[batchSize]}
+        min={1}
+        max={50}
+        step={1}
+        onv
+      />
+    </BatchWrapper>
   );
 }
 

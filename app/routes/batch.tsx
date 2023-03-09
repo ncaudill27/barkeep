@@ -15,7 +15,7 @@ import type { Drink } from "~/drink";
 import { BatchedRecipe, useBatch } from "~/hooks";
 
 import { ThickHeading } from "~/components/heading";
-import DrinkComponent from "~/components/drink";
+import { BatchDrink } from "~/components/drink";
 
 export const meta: MetaFunction = () => {
   return {
@@ -90,7 +90,7 @@ export default function Batch() {
         </StyledLabel>
       </InputWrapper>
       {batchedDrinks.map((drink) => (
-        <DrinkComponent key={drink.name} view="batch" {...drink} />
+        <BatchDrink key={drink.name} {...drink} />
       ))}
     </BatchContext.Provider>
   );
