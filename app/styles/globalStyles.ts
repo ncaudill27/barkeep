@@ -66,6 +66,8 @@ export default createGlobalStyle`
     --font-family-primary: "Boska", "Spectral", "serif";
     --font-family-secondary: "Supreme", "Open Sans", "Segoe UI", "Apple SD Gothic Neo", "Lucida Grande", "Lucida Sans Unicode", "sans‑serif";
     --font-family-code: "Source Code Pro", "Fira Mono", "monospace";
+    
+    --outline: 2px solid var(--color-orange);
   }
   /*
     Josh's Custom CSS Reset
